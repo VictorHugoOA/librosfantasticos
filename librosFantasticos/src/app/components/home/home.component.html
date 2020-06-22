@@ -1,0 +1,29 @@
+<div  >
+    <mat-card id="cabecera" layout-align="center center">
+        <mat-card-header style="text-align: center;">
+            <mat-card-title>
+                <h1> <b>¡Bienvenidos!</b> </h1>
+            </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+           <img id="logo"[src]="logo" alt=""> <h2>Libros fantásticos... Y donde encontrarlos</h2>
+        </mat-card-content>
+    </mat-card>
+
+   
+                
+                    
+       
+<div class="container">
+    <h2>¡Novedades!</h2>
+   <div class="card-columns">  
+      <div class="card"  *ngFor="let libro of libroRand,let i= index">
+        <img src="{{libro.img}}" class="card-img-top  img-fluid" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">{{libro.nombre}}</h5>
+          <p class="card-text"><small class="text-muted">{{libro.autor}}</small></p>
+          <button mat-raised-button color="warn">Nuevo</button>
+        </div>
+      </div>
+    </div>
+  </div>

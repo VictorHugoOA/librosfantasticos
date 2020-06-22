@@ -1,0 +1,69 @@
+<div class="panel">
+  <h1>Preguntas Frecuentes</h1>
+<div class="example-action-buttons">
+    <button mat-button (click)="accordion.openAll()">Expandir todo</button>
+    <button mat-button (click)="accordion.closeAll()">Cerrar todo</button>
+  </div>
+  <mat-accordion class="example-headers-align" multi>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+         ¿Necesito una cuenta para leer los ejemplares disponibles?
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+        <mat-label>Se puede ver nuestra selección libros disponibles sin necesidad de estar logeado, pero deberas estar logeado para poder leer los ejemplares virtuales.</mat-label>  
+    </mat-expansion-panel>
+
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+         ¿Cómo funciona la biblioteca virtual?
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+        <mat-label>
+          Al crear una cuenta en Libros Fantasticos, tendrás acceso tanto a libros electronicos como los ejemplares fisicos para su prestamo en nuestro establecimiento.
+        También podras revisar tu historial de prestamos.</mat-label>  
+    </mat-expansion-panel>
+  
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+         ¿Puedo consultar si tienen existencia física de algun ejemplar para su prestamo?
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+        <mat-label>
+          Al seleccionar un ejemplar podrás ver si se encuentra disponible en el establecimiento.</mat-label>  
+    </mat-expansion-panel>
+
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+         ¿Puedo apartar un ejemplar físico para su prestamo?
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+        <mat-label>
+          Al seleccionar un ejemplar tendrás la opción de apartar si se encuentra disponible,  se dará un plazo para recoger en el establecimiento</mat-label>  
+    </mat-expansion-panel>
+    
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+         ¿Qué pasará si no recogí mi ejemplar apartado en el plazo?
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+        <mat-label>
+         El apartado se cancelara y el ejemplar estara disponible para otros usuarios</mat-label>  
+    </mat-expansion-panel>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+         ¿Qué pasará si excedo mi plazo de prestamo?
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+        <mat-label>
+         Se hara un cargo a tu cuenta por una multa correspondiente a los días de retraso</mat-label>  
+    </mat-expansion-panel>
+    
+    
+  </mat-accordion>
+  </div>

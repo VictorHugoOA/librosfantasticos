@@ -1,0 +1,42 @@
+.example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  .example-full-width {
+    width: 100%;
+  }
+  
+  iframe {
+    width: 100%;
+    height: auto;
+   }
+
+  .contacto {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 20px;
+    background: #87d8d4;
+  }
+  /* Column Gap */
+  .contacto > * {
+    box-sizing: border-box;
+  }
+  .contacto > *:not(:last-child) {
+    margin-right: 32px;
+  }
+  /* Item sizing */
+  .cardListItem {
+    flex: 0 1 calc(33.3% - 32px);
+  }
+
+  legend, h2,h1{
+    font-family: 'Bellota', cursive;
+    text-align: center;
+    font-size: larger;
+    background: rgba(35, 180, 216, 0.856);
+    border-radius: 20px;
+  }

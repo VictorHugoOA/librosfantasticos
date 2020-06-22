@@ -1,0 +1,20 @@
+
+  h2,h1{
+    font-family: 'Bellota', cursive;
+    text-align: center;
+    background: rgba(35, 180, 216, 0.856);
+    border-radius: 20px;
+  }
+
+#logo{
+    width:100%;
+    max-width:400px;
+}
+#cabecera{
+    background-image: url('../../../assets/img/portada.jpg');
+    text-align: center;
+
+}
+.mat-card-footer{
+  padding:  20px;
+}

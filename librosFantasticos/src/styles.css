@@ -1,0 +1,48 @@
+/* You can add global styles to this file, and also import other style files */
+@use "@material/image-list/mdc-image-list";
+html, body { height: 100%; }
+body { margin: 0;   
+    font-family: 'Bellota', cursive;
+    background: #87d8d4; }
+
+.navbar-light{
+        background:#078dc293;
+      /*background:#00b5fd93; */
+        font-family: 'Bellota', cursive;
+        color:black;
+    }
+   
+a{
+        color: black;
+    }
+    
+.container{
+    padding: 20px;
+    }
+
+    @media (min-width: 576px) {
+        .card-columns {
+            column-count: 2;
+        }
+      }
+      
+      @media (min-width: 768px) {
+        .card-columns {
+            column-count: 3;
+        }
+      }
+      
+      @media (min-width: 992px) {
+        .card-columns {
+            column-count: 4;
+        }
+      }
+      
+      @media (min-width: 1200px) {
+        .card-columns {
+            column-count: 5;
+        }
+      }
+.card-img-top {
+  height: 300px;
+}
