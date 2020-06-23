@@ -57,6 +57,11 @@ import { BibliotecaComponent } from './components/biblioteca/biblioteca.componen
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { FooterComponent } from './components/footer/footer.component';
+import { environment } from 'src/environments/environment';
+
+//Servicios de Firebase y conexion
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireModule } from '@angular/fire';
 
 @NgModule({
   declarations: [
@@ -119,7 +124,9 @@ import { FooterComponent } from './components/footer/footer.component';
     MatTooltipModule,
     MatTreeModule,
     PortalModule,
-    ScrollingModule
+    ScrollingModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule
   ],
   providers: [LibrosService],
   bootstrap: [AppComponent]
