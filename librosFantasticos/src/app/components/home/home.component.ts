@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { LibrosService, libro } from '../servicios/libros.service';
+import { LibrosService, libro } from '../services/libros.service';
 
 
 @Component({
@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.Libros=this.mislibros.getLibros();
     var i = 0;
-    while(i < 4)
+    while(i < 5)
     {
       var x = Math.floor(Math.random()*(this.Libros.length-1));
       if(!this.libroRand.find(element =>

@@ -9,7 +9,7 @@ import { ContactoComponent } from './components/contacto/contacto.component';
 import { AboutComponent } from './components/about/about.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { LibrosService } from './components/servicios/libros.service'
+import { LibrosService } from './components/services/libros.service'
 import { FlexLayoutModule } from '@angular/flex-layout';
 import {A11yModule} from '@angular/cdk/a11y';
 import {ClipboardModule} from '@angular/cdk/clipboard';
@@ -62,6 +62,11 @@ import { environment } from 'src/environments/environment';
 //Servicios de Firebase y conexion
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireModule } from '@angular/fire';
+import { AdminComponent } from './components/admin/admin.component';
+
+//QR Y GRAFICAS
+import { QRCodeModule } from 'angularx-qrcode';
+import { FichaLibroComponent } from './components/ficha-libro/ficha-libro.component';
 
 @NgModule({
   declarations: [
@@ -72,7 +77,9 @@ import { AngularFireModule } from '@angular/fire';
     AboutComponent,
     NavbarComponent,
     BibliotecaComponent,
-    FooterComponent
+    FooterComponent,
+    AdminComponent,
+    FichaLibroComponent
   ],
   imports: [
     BrowserModule,
@@ -125,6 +132,7 @@ import { AngularFireModule } from '@angular/fire';
     MatTreeModule,
     PortalModule,
     ScrollingModule,
+    QRCodeModule, 
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule
   ],

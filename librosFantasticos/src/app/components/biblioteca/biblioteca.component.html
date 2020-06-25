@@ -1,12 +1,6 @@
 <div class="container">
-  <div class="card-columns">
-    <div class="card" *ngFor="let libro of Libros, let i= index">
-      <img src="{{libro.img}}" class="card-img-top  img-fluid" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">{{libro.nombre}}</h5>
-        <p class="card-text"><small class="text-muted">{{libro.autor}}</small></p>
-        <a [routerLink]="" class="btn btn-outline-info btn-block">Ver mas</a>
-      </div>
-    </div>
+  <div class="col">
+    <input #termino type="text"  class="form-control" placeholder="Buscar libros...">
   </div>
-</div>
+  <app-ficha-libro></app-ficha-libro>
+  </div>
