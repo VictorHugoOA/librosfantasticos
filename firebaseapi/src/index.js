@@ -75,4 +75,46 @@ app.get('/get-book', (req, res) =>
     })
 });
 
+app.get('/get-book', (req, res) =>
+{
+    let books = db.collection('libros');
+    let val = new Array();
+    let query = null;
+    let limitSize = 10000000000;
+    if(req.query.limit)
+    {
+        limitSize = parseInt(req.query.limit);
+    }
+    if(req.query.nombre)
+    {
+        let i = 0;
+        query = books.get().then(snapshot => {
+            snapshot.forEach( doc => {
+                if(doc.data().nombre.indexOf(req.query.nombre) != -1 && i < limitSize)
+                {
+                    val.push({id: doc.id, autor: doc.data().autor, img: doc.data().img, nombre: doc.data().nombre, sinopsis: doc.data().sinopsis});
+                    i++;
+                }
+            })
+        })
+    }
+    else if(req.query.autor)
+    {
+        let i = 0;
+        query = books.get().then(snapshot => {
+            snapshot.forEach( doc => {
+                if(doc.data().autor.indexOf(req.query.autor) != -1 && i < limitSize)
+                {
+                    val.push({id: doc.id, autor: doc.data().autor, img: doc.data().img, nombre: doc.data().nombre, sinopsis: doc.data().sinopsis});
+                    i++;
+                }
+            })
+        })
+    }
+    query.finally(()=>
+    {
+        res.send(val);
+    })
+});
+
 console.log("Server on port: ", app.get('port'));
