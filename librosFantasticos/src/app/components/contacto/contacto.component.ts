@@ -16,10 +16,10 @@ export class ContactoComponent implements OnInit {
 
   getErrorMessage() {
     if (this.email.hasError('required')) {
-      return 'You must enter a value';
+      return 'Debes proporcionar un Email';
     }
 
-    return this.email.hasError('email') ? 'Not a valid email' : '';
+    return this.email.hasError('email') ? 'Email invalido' : '';
   }
 
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { LibrosService,libro } from '../servicios/libros.service';
+import { LibrosService,libro } from '../services/libros.service';
 
 @Component({
   selector: 'app-biblioteca',
@@ -11,6 +11,20 @@ export class BibliotecaComponent implements OnInit {
   constructor(private mislibros:LibrosService) { }
 
   ngOnInit(): void {
-    this.Libros=this.mislibros.getLibros();
+    this.mislibros.getLibros().snapshotChanges().subscribe((data)=>
+    {
+      this.Libros = [];
+      data.forEach(element =>
+        {
+          let x = new libro();
+          x.$key = element.payload.doc.id;
+          x.nombre = element.payload.doc.data().nombre;
+          x.autor = element.payload.doc.data().autor;
+          x.sinopsis = element.payload.doc.data().sinopsis;
+          x.img = element.payload.doc.data().img;
+          this.Libros.push(x);
+        })
+        console.log(this.Libros);
+    });
   }
 }

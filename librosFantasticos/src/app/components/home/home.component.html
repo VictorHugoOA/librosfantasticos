@@ -16,14 +16,5 @@
        
 <div class="container">
     <h2>¡Novedades!</h2>
-   <div class="card-columns">  
-      <div class="card"  *ngFor="let libro of libroRand,let i= index">
-        <img src="{{libro.img}}" class="card-img-top  img-fluid" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">{{libro.nombre}}</h5>
-          <p class="card-text"><small class="text-muted">{{libro.autor}}</small></p>
-          <button mat-raised-button color="warn">Nuevo</button>
-        </div>
-      </div>
-    </div>
+   <app-ficha-libro  [items]="libroRand"></app-ficha-libro>
   </div>
