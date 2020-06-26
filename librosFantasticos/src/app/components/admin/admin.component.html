@@ -1,1 +1,73 @@
-<p>admin works!</p>
+<div class="container">
+  <div class="row mt-4 text-center">
+    <div class="col">
+      <h1>Alta Ejemplares</h1>
+      <form [formGroup]="Altas" (ngSubmit)="guardarDatos()">
+        <div class="form-group row">
+          <label class="col-2 text-center col-form-label">Titulo</label>
+          <div class="col-7">
+            <input 
+                class="form-control" 
+                type="text"
+                formControlName="nombre">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-2 text-center col-form-label">Autor</label>
+          <div class="col-7">
+            <input 
+                class="form-control" 
+                type="text"
+                formControlName="autor">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-2 text-center col-form-label">Portada</label>
+          <div class="col-7">
+            <input 
+                class="form-control"
+                type="file"
+                formControlName="img">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-2 text-center col-form-label">Sinopsis</label>
+          <div class="col-7">
+            <textarea class="form-control" placeholder="Sinopsis" formControlName="sinopsis"></textarea>
+           
+          </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-2 text-center col-form-label">&nbsp;</label>
+            <div class="input-group col-md-8">
+                <button mat-fab color="warn" type="submit"><mat-icon>send</mat-icon></button>
+              </div>
+          </div>
+       
+      </form>
+
+    </div>
+    <div class="col">
+      <h1>Estadisticas</h1>
+      <app-grafica></app-grafica>
+    </div>
+  </div>
+  <div class="row mt-4 table-responsive">
+      <table>
+          <thead>
+              <tr>
+                  <th>Titulo</th>
+                  <th>Autor</th>
+                  <th>Portada</th>
+                  <th>Sinopsis</th>
+                  <th>Eliminar</th>
+                  <th>Modificar</th>
+              </tr>
+          </thead>
+            <tr>
+                <td></td>
+            </tr>
+          <th></th>
+      </table>
+  </div>
+</div>

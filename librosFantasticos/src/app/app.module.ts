@@ -67,6 +67,8 @@ import { AdminComponent } from './components/admin/admin.component';
 //QR Y GRAFICAS
 import { QRCodeModule } from 'angularx-qrcode';
 import { FichaLibroComponent } from './components/ficha-libro/ficha-libro.component';
+import { GraficaComponent } from './components/grafica/grafica.component';
+import { UsuarioComponent } from './components/usuario/usuario.component';
 
 @NgModule({
   declarations: [
@@ -79,7 +81,9 @@ import { FichaLibroComponent } from './components/ficha-libro/ficha-libro.compon
     BibliotecaComponent,
     FooterComponent,
     AdminComponent,
-    FichaLibroComponent
+    FichaLibroComponent,
+    GraficaComponent,
+    UsuarioComponent
   ],
   imports: [
     BrowserModule,

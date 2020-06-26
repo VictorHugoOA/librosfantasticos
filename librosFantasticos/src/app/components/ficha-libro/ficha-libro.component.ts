@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { LibrosService, libro } from '../services/libros.service';
+import { Component, OnInit,Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-ficha-libro',
@@ -8,10 +8,11 @@ import { LibrosService, libro } from '../services/libros.service';
 })
 export class FichaLibroComponent implements OnInit {
 
-  Libros:libro[];
-  constructor(private mislibros:LibrosService) { }
+  @Input() items:any[]=[];
+
+  constructor(private router:Router) { }
 
   ngOnInit(): void {
-    this.Libros=this.mislibros.getLibros();
+  
   }
 }

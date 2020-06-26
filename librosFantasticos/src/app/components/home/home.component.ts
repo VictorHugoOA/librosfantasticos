@@ -15,23 +15,38 @@ export class HomeComponent implements OnInit {
   constructor(private mislibros:LibrosService) { }
 
   ngOnInit(): void {
-    this.Libros=this.mislibros.getLibros();
-    var i = 0;
-    while(i < 5)
+  this.mislibros.getLibros().snapshotChanges().subscribe((data)=>
     {
-      var x = Math.floor(Math.random()*(this.Libros.length-1));
-      if(!this.libroRand.find(element =>
+      this.Libros = [];
+      data.forEach(element =>
         {
-          element.nombre === this.Libros[x].nombre;
-        }))
+          let x = new libro();
+          x.$key = element.payload.doc.id;
+          x.nombre = element.payload.doc.data().nombre;
+          x.autor = element.payload.doc.data().autor;
+          x.sinopsis = element.payload.doc.data().sinopsis;
+          x.img = element.payload.doc.data().img;
+          this.Libros.push(x);
+        })
+        console.log(this.Libros);
+        var i = 0;
+        while(i < 5)
         {
-          this.libroRand.push(this.Libros[x]);
-          i++;
+          var x = Math.floor(Math.random()*(this.Libros.length-1));
+          if(!this.libroRand.find(element =>
+            {
+              element.nombre === this.Libros[x].nombre;
+            }))
+            {
+              this.libroRand.push(this.Libros[x]);
+              i++;
+            }
         }
-    }
-
-    console.log(this.libroRand);
     
+        console.log(this.libroRand);
+        
+      
+    });
   }
 
 }
