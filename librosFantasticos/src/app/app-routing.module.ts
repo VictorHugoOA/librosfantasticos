@@ -5,6 +5,7 @@ import { ContactoComponent } from './components/contacto/contacto.component';
 import { AboutComponent } from './components/about/about.component';
 import { PreguntasComponent } from './components/preguntas/preguntas.component';
 import { BibliotecaComponent } from './components/biblioteca/biblioteca.component';
+import { RegisterComponent } from './components/register/register.component';
 
 
 
@@ -14,6 +15,7 @@ const routes: Routes = [
   {path: "Contacto", component:ContactoComponent},
   {path: "About", component:AboutComponent},
   {path: "Preguntas", component:PreguntasComponent},
+  {path: 'register', component:RegisterComponent},
   {path: "**", pathMatch:'full', redirectTo:"Home"},
   ];
   
