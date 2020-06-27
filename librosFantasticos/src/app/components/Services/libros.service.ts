@@ -19,7 +19,13 @@ export class LibrosService {
 
     insertLibro(libros: libro)
     {
-      this.productList.add({nombre:libros.nombre, autor: libros.autor, img: libros.img, sinopsis: libros.sinopsis});
+      this.productList.add({nombre:libros.nombre, 
+        autor: libros.autor, 
+        img: libros.img, 
+        sinopsis: libros.sinopsis,
+        fisico: libros.fisico,
+        electronico: libros.electronico
+        });
     }
   }
   
@@ -29,4 +35,6 @@ export class LibrosService {
     autor:string;
     img:string;
     sinopsis:string;
+    fisico:number;
+    electronico:boolean;
   }

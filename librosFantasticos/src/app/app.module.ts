@@ -69,6 +69,8 @@ import { QRCodeModule } from 'angularx-qrcode';
 import { FichaLibroComponent } from './components/ficha-libro/ficha-libro.component';
 import { GraficaComponent } from './components/grafica/grafica.component';
 import { UsuarioComponent } from './components/usuario/usuario.component';
+import { SearchComponent } from './components/search/search.component';
+import { LibroInfoComponent } from './components/libro-info/libro-info.component';
 
 @NgModule({
   declarations: [
@@ -83,7 +85,9 @@ import { UsuarioComponent } from './components/usuario/usuario.component';
     AdminComponent,
     FichaLibroComponent,
     GraficaComponent,
-    UsuarioComponent
+    UsuarioComponent,
+    SearchComponent,
+    LibroInfoComponent
   ],
   imports: [
     BrowserModule,
