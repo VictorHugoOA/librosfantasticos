@@ -1,10 +1,18 @@
-.example-form {
-    min-width: 150px;
-    max-width: 500px;
-    width: 100%;
-}
-.form-container
+.div-container
 {
-    font: 95% Arial, Helvetica, sans-serif;
-    
+    background-image: url('../../../assets/img/back.jpeg');
+    border-radius: 20px;
+    font-family: 'Bellota', cursive;
+}
+.div-az 
+{
+    background-color: azure;
+    border-radius: 20px;
+    max-width: 500px;
+    font-family: 'Bellota', cursive;
+}
+.register-title
+{
+    font-family: 'Bellota', cursive;
+    font-weight: bolder;
 }

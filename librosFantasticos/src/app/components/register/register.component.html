@@ -1,31 +1,48 @@
 <div class="container">
-    <div class="rounded p-5 mt-5" style="background-color: #00b5fd93;">
-        <h1 class="pl-2">Registrar usuario</h1>
-        <form action="">
-            <div class="form-group row justify-content-between">
-                <label for="email" class="col-2 col-md-2 col-sm-2 col-form-label">Correo:</label>
-                <div class="col-8 col-md-8 col-sm-8">
-                    <input type="email" name="email" class="form-control" id="" placeholder="Ingresa tu correo">
+    <div class="px-1 py-5 div-container">
+        <div class="div-az p-2 m-auto">
+            <h1 class="register-title">Registrar usuario</h1>
+            <form [formGroup]="registerForm" (ngSubmit)="onSaveForm()">
+                <div class="form-group row justify-content-between">
+                    <label #user (click)="access.getSpeech('Usuario')" for="usuario" class="col-2 col-md-2 col-sm-2 col-form-label">Usuario:</label>
+                    <div class="col-8 col-md-8 col-sm-8">
+                        <input type="text" class="form-control" (click)="access.getSpeech('Ingresa tu usuario');" formControlName="usuario" name="usuario" id="" placeholder="Ingresa tu usuario" required>
+                    </div>
                 </div>
-            </div>
-            <div class="form-group row justify-content-between">
-                <label for="usuario" class="col-2 col-md-2 col-sm-2 col-form-label">Usuario:</label>
-                <div class="col-8 col-md-8 col-sm-8">
-                    <input type="text" class="form-control" name="usuario" id="" placeholder="Ingresa tu usuario">
+                <div class="form-group row justify-content-between">
+                    <label for="email" class="col-2 col-md-2 col-sm-2 col-form-label">Correo:</label>
+                    <div class="col-8 col-md-8 col-sm-8">
+                        <input type="email" name="email" class="form-control" formControlName="email" (click)="access.getSpeech('Ingresa tu correo'); checkEmail();" id="" placeholder="Ingresa tu correo" required>
+                    </div>
                 </div>
-            </div>
-            <div class="form-group row justify-content-between">
-                <label for="contraseña" class="col-2 col-md-2 col-sm-2 col-form-label">Contraseña:</label>
-                <div class="col-8 col-md-8 col-sm-8">
-                    <input type="password" class="form-control" name="contraseña" id=""
-                        placeholder="Ingresa tu contraseña">
+                <div class="form-group row justify-content-between">
+                    <label for="confirmEmail" class="col-2 col-md-2 col-sm-2 col-form-label">Confirmar:</label>
+                    <div class="col-8 col-md-8 col-sm-8">
+                        <input type="email" name="confirmEmail" class="form-control" (click)="access.getSpeech('Confimra tu correo'); checkConfirmationEmail();" formControlName="confirmEmail" id=""
+                            placeholder="Confirma tu correo" required>
+                    </div>
                 </div>
-            </div>
-            <div class="form-group row justify-content-between">
-                <div class="col-8 col-md-8 col-sm-8 offset-4">
-                    <button type="submit" mat-raised-button color="warn">Crear cuenta</button>
+                <div class="form-group row justify-content-between">
+                    <label for="password" class="col-2 col-md-2 col-sm-2 col-form-label">Contraseña:</label>
+                    <div class="col-8 col-md-8 col-sm-8">
+                        <input type="password" class="form-control" formControlName="password" (click)="access.getSpeech('Ingresa tu contraseña'); checkPassword()" name="password" id=""
+                            placeholder="Ingresa tu contraseña" required>
+                    </div>
                 </div>
-            </div>
-        </form>
+                <div class="form-group row justify-content-between">
+                    <label for="confirmPassword" class="col-2 col-md-2 col-sm-2 col-form-label">Confirmar:</label>
+                    <div class="col-8 col-md-8 col-sm-8">
+                        <input type="password" class="form-control" formControlName="confirmPassword" (click)="access.getSpeech('Confimra tu contraseña'); checkConfirmationPassword()" name="confirmPassword" id=""
+                            placeholder="Confirma tu contraseña" required>
+                    </div>
+                </div>
+                <div class="form-group row justify-content-between">
+                    <div class="col-8 col-md-8 col-sm-8 offset-4">
+                        <button type="submit" [disabled]="registerForm.invalid" mat-raised-button color="warn">Crear
+                            cuenta</button>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
