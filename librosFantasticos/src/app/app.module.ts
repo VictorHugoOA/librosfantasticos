@@ -62,6 +62,8 @@ import { environment } from 'src/environments/environment';
 //Servicios de Firebase y conexion
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireModule } from '@angular/fire';
+import {AngularFireAnalyticsModule} from '@angular/fire/analytics';
+
 import { AdminComponent } from './components/admin/admin.component';
 
 //QR Y GRAFICAS
@@ -142,7 +144,8 @@ import { LibroInfoComponent } from './components/libro-info/libro-info.component
     ScrollingModule,
     QRCodeModule, 
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    AngularFireAnalyticsModule
   ],
   providers: [LibrosService],
   bootstrap: [AppComponent]
