@@ -3,22 +3,22 @@
     <section class="section-top">
       <div class="col">
         <h3>Redes</h3>
-        <div><i class="fab fa-twitter-square"></i>Libros Fantasticos</div>
-        <div><i class="fab fa-facebook"></i>Libros Fantasticos</div>
-        <div><i class="fab fa-instagram"></i> Libros Fantasticos</div>
+        <div (click)="speech('Twitter')"><i class="fab fa-twitter-square"></i>Libros Fantasticos</div>
+        <div (click)="speech('Facebook')"><i class="fab fa-facebook"></i>Libros Fantasticos</div>
+        <div (click)="speech('Instagram')"><i class="fab fa-instagram"></i> Libros Fantasticos</div>
       </div>
       <div class="col">
-        <h3>Generos</h3>
-        <div>Clásicos</div>
-        <div>Terror</div>
-        <div>Ciencia Ficción</div>
-        <div>Aventura</div>
-        <div>Young Adult</div>
+        <h3 (click)="speech('Generos')">Generos</h3>
+        <div (click)="speech('Clasicos')">Clásicos</div>
+        <div (click)="speech('Terror')">Terror</div>
+        <div (click)="speech('Ciencia ficcion')">Ciencia Ficción</div>
+        <div (click)="speech('Aventura')">Aventura</div>
+        <div (click)="speech('Young Adult')">Young Adult</div>
       </div>
    
     </section>
     <section class="section-bottom">
     
-      <div><small>@Libros_Fantasticos</small></div>
+      <div (click)="speech('Libros fantasticos')"><small>@Libros_Fantasticos</small></div>
     </section>
     </footer>

@@ -9,7 +9,7 @@ import { AccesibilidadService } from '../Services/accesibilidad.service';
 })
 export class NavbarComponent implements OnInit {
   logo='../../../assets/img/logo.png';
-  constructor(public auth: AuthService, public access: AccesibilidadService) { }
+  constructor(public auth: AuthService, private access: AccesibilidadService) { }
 
   ngOnInit(): void {
     this.auth.userData.subscribe((data)=>
@@ -17,5 +17,21 @@ export class NavbarComponent implements OnInit {
       console.log(data.uid);
     })
   }
+
+  changeAccess()
+  {
+    this.access.changeAccess();
+  }
+
+  getAccess()
+  {
+    return this.access.activeAccess;
+  }
+
+  speech(msg: string)
+  {
+    this.access.getSpeech(msg);
+  }
+
 
 }
