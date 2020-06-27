@@ -32,7 +32,7 @@
           <button mat-button (click)="auth.signOut()" class="nav-item nav-link active"><mat-icon>exit_to_app</mat-icon>Log Out</button>
       </li>
         <li class="nav-item active">
-            <button mat-button class="nav-item nav-link active"><mat-icon>visibility</mat-icon></button>
+            <button mat-button class="nav-item nav-link active" (click)="access.changeAccess()"><mat-icon *ngIf="access.activeAccess">visibility</mat-icon><mat-icon *ngIf="!access.activeAccess">visibility_off</mat-icon></button>
         </li>
       </ul>
       <form class="form-inline my-2 my-lg-0">
