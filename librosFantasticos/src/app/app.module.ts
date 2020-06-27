@@ -76,6 +76,8 @@ import { RegisterComponent } from './components/register/register.component';
 
 //Toastr para las notificaciones.
 import { ToastrModule } from 'ngx-toastr';
+import { LoginComponent } from './components/login/login.component';
+import { AccesibilidadService } from './components/Services/accesibilidad.service';
 
 @NgModule({
   declarations: [
@@ -91,7 +93,8 @@ import { ToastrModule } from 'ngx-toastr';
     FichaLibroComponent,
     GraficaComponent,
     UsuarioComponent,
-    RegisterComponent
+    RegisterComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -149,7 +152,7 @@ import { ToastrModule } from 'ngx-toastr';
     AngularFirestoreModule,
     ToastrModule.forRoot()
   ],
-  providers: [LibrosService, AuthService],
+  providers: [LibrosService, AuthService, AccesibilidadService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

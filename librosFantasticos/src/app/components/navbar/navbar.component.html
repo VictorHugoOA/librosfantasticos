@@ -22,9 +22,15 @@
             <button mat-button class="nav-item nav-link active" routerLink="/Preguntas"><mat-icon>help</mat-icon>FAQ</button>
           
         </li>
-        <li class="nav-item active">
-            <button mat-button class="nav-item nav-link active"><mat-icon>login</mat-icon>Login</button>
+        <li class="nav-item active" *ngIf="!(auth.userData | async)">
+            <button mat-button class="nav-item nav-link active" routerLink="/Ingresar"><mat-icon>login</mat-icon>Login</button>
         </li>
+        <li class="nav-item active" *ngIf="auth.userData | async">
+            <button mat-button class="nav-item nav-link active" routerLink="/Usuario">{{(auth.userData | async)?.email}}</button>
+        </li>
+        <li class="nav-item active" *ngIf="auth.userData | async">
+          <button mat-button (click)="auth.signOut()" class="nav-item nav-link active"><mat-icon>exit_to_app</mat-icon>Log Out</button>
+      </li>
         <li class="nav-item active">
             <button mat-button class="nav-item nav-link active"><mat-icon>visibility</mat-icon></button>
         </li>

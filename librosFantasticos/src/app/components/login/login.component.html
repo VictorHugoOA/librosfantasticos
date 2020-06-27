@@ -1,0 +1,39 @@
+<div class="container" *ngIf="!(auth.userData | async)">
+    <div class="px-1 py-5 div-container">
+        <div class="div-az p-2 m-auto">
+            <h1 class="register-title">Ingresar</h1>
+            <form [formGroup]="loginForm" (ngSubmit)="onSaveForm()">
+                <div class="form-group row justify-content-between">
+                    <label for="email" class="col-2 col-md-2 col-sm-2 col-form-label">Correo:</label>
+                    <div class="col-8 col-md-8 col-sm-8">
+                        <input type="email" name="email" class="form-control" formControlName="email" (click)="access.getSpeech('Ingresa tu correo');" id="" placeholder="Ingresa tu correo" required>
+                    </div>
+                </div>
+                <div class="form-group row justify-content-between">
+                    <label for="password" class="col-2 col-md-2 col-sm-2 col-form-label">Contraseña:</label>
+                    <div class="col-8 col-md-8 col-sm-8">
+                        <input type="password" class="form-control" formControlName="password" (click)="access.getSpeech('Ingresa tu contraseña');" name="password" id=""
+                            placeholder="Ingresa tu contraseña" required>
+                    </div>
+                </div>
+                <div class="form-group row justify-content-between">
+                    <div class="col-8 col-md-8 col-sm-8 offset-4">
+                        <button type="submit" mat-raised-button [disabled]='loginForm.invalid' color="warn">Ingresar cuenta</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="container" *ngIf="auth.userData | async">
+    <div class="px-1 py-5 div-container">
+        <div class="div-az p-2 m-auto">
+            <h1 class="register-title">Lo siento, tu ya ingresaste a la pagina</h1>
+            <div class="form-group row justify-content-between">
+                <div class="col-8 col-md-8 col-sm-8 offset-4">
+                    <button type="submit" mat-raised-button (click)="auth.signOut()" color="warn"><mat-icon>exit_to_app</mat-icon>Cerrar Sesion</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

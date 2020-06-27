@@ -7,20 +7,24 @@ import { PreguntasComponent } from './components/preguntas/preguntas.component';
 import { BibliotecaComponent } from './components/biblioteca/biblioteca.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { RegisterComponent } from './components/register/register.component';
+import { LoginComponent } from './components/login/login.component';
+import { UsuarioComponent } from './components/usuario/usuario.component';
 
 
 
-const routes: Routes = [ 
-  {path: "Home",component:HomeComponent},
-  {path: "Biblioteca", component:BibliotecaComponent},
-  {path: "Contacto", component:ContactoComponent},
-  {path: "About", component:AboutComponent},
-  {path: "Preguntas", component:PreguntasComponent},
-  {path: "Admin", component:AdminComponent},
-  {path:"Registro", component:RegisterComponent},
-  {path: "**", pathMatch:'full', redirectTo:"Home"},
-  ];
-  
+const routes: Routes = [
+  { path: "Home", component: HomeComponent },
+  { path: "Biblioteca", component: BibliotecaComponent },
+  { path: "Contacto", component: ContactoComponent },
+  { path: "About", component: AboutComponent },
+  { path: "Preguntas", component: PreguntasComponent },
+  { path: "Admin", component: AdminComponent },
+  { path: "Registro", component: RegisterComponent },
+  { path: "Ingresar", component: LoginComponent },
+  { path: "Usuario", component: UsuarioComponent},
+  { path: "**", pathMatch: 'full', redirectTo: "Home" },
+];
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
