@@ -57,8 +57,11 @@
         </div>
         <div class="form-group row">
             <label class="col-2 text-center col-form-label">&nbsp;</label>
-            <div class="input-group col-md-8">
+            <div class="input-group col-md-3">
                 <button mat-fab color="warn" type="submit"><mat-icon>send</mat-icon></button>
+              </div>
+              <div class="input-group col-md-4">
+                <button mat-fab color="warn" type="submit" (click)="resetForm()"><mat-icon>cached</mat-icon></button>
               </div>
           </div>
        
@@ -83,7 +86,7 @@
                   <th>Electronico</th>
               </tr>
           </thead>
-            <tr *ngFor="let libro of Libros, let i= index">
+            <tr *ngFor="let libro of Libros, let i = index">
                 <td>{{libro.nombre}}</td>
                 <td>{{libro.autor}}</td>
                 <td><img [src]="libro.img" class="portada img-fluid"alt=""></td>
@@ -91,8 +94,8 @@
                 <td style="text-align: center;">   {{libro.fisico}}</td>
                 <td *ngIf="libro.electronico;else nohay"><mat-icon>done</mat-icon> </td>
                 <ng-template #nohay> <td><mat-icon>clear</mat-icon></td></ng-template>
-                <td > <button mat-fab color="primary"><mat-icon>delete</mat-icon></button></td>
-                <td ><button mat-fab color="success"><mat-icon>sync</mat-icon></button></td>
+                <td > <button mat-fab color="primary" (click)="borrarLibro(libro.$key)"><mat-icon>delete</mat-icon></button></td>
+                <td ><button mat-fab color="success" (click)="setSelected(libro)"><mat-icon>edit</mat-icon></button></td>
             </tr>
         
       </table>

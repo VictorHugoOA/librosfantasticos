@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { LibrosService,libro } from '../services/libros.service';
+import { AngularFireAnalytics } from '@angular/fire/analytics';
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
@@ -11,6 +12,7 @@ export class AdminComponent implements OnInit {
   Altas: FormGroup;
   //Libros en inventario
   Libros: libro[];
+  selectedLibro: string = null;
 
   constructor(private inventario:LibrosService) {
     // inicialización del formulario
@@ -44,5 +46,61 @@ export class AdminComponent implements OnInit {
     });
   }
 
-  guardarDatos(): void {}
+  borrarLibro(id: string)
+  {
+    this.inventario.borrarLibro(id);
+  }
+
+  setSelected(libros: libro)
+  {
+    this.inventario.edit = true;
+    this.Altas.setValue({
+      nombre: libros.nombre,
+      autor: libros.autor,
+      img: libros.img,
+      sinopsis: libros.sinopsis,
+      fisico: libros.fisico,
+      electronico: libros.electronico
+    })
+    this.selectedLibro = libros.$key;
+
+  }
+
+  resetForm()
+  {
+    this.Altas.reset()
+    this.inventario.edit = false;
+    this.selectedLibro = null;
+  }
+
+  getAltaLibro()
+  {
+    var newLibro = new libro();
+    newLibro.nombre = this.Altas.get('nombre').value;
+    newLibro.autor = this.Altas.get('autor').value;
+    newLibro.img = this.Altas.get('img').value;
+    newLibro.sinopsis = this.Altas.get('sinopsis').value;
+    newLibro.fisico = this.Altas.get('fisico').value;
+    newLibro.electronico = this.Altas.get('electronico').value;
+
+    return newLibro;
+  }
+
+  guardarDatos(): void {
+    if(this.inventario.edit)
+    {
+      var newLibro = this.getAltaLibro();
+      newLibro.$key = this.selectedLibro;
+      this.inventario.updateLibro(newLibro);
+      this.resetForm();
+      return;
+    }
+
+    var newLibro = this.getAltaLibro();
+    this.inventario.insertLibro(newLibro);
+    this.resetForm();
+    return;
+
+
+  }
 }
