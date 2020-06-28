@@ -91,6 +91,21 @@ app.get('/get-book', (req, res) =>
     })
 });
 
+app.get('/get-qr/:uid', (req, res) =>
+{
+    let book = db.collection('libros').doc(req.params.uid);
+    let result = null;
+    let query = book.get().then(doc=>
+        {
+            result = {nombre: doc.get('nombre'), autor: doc.get('autor'), sinopsis: doc.get('sinopsis')};
+        })
+
+    query.finally(() =>
+    {
+        res.send(`${result.nombre}: ${result.autor}. ${result.sinopsis}`);
+    })
+})
+
 app.post('/send-email', (req, res)=>
 {
     var mailOptions = {

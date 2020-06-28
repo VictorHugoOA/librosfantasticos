@@ -14,7 +14,12 @@ export class FichaLibroComponent implements OnInit {
   constructor(private router:Router, private access: AccesibilidadService) { }
 
   ngOnInit(): void {
-  
+    
+  }
+
+  getQr(uid: string)
+  {
+    
   }
 
   speech(msg: string)

@@ -6,6 +6,7 @@
         <div class="card-body">
           <h5 class="card-title">{{item.nombre}}</h5>
           <p class="card-text"><small class="text-muted">{{item.autor}}</small></p>
+          <qrcode qrdata="hola todooooos" [width]="128" [errorCorrectionLevel]="'M'"></qrcode>
           <a [routerLink]="" (focus)="speech('Ver mas ' + item.nombre)" class="btn btn-outline-info btn-block">Ver mas</a>
         </div>
       </div>

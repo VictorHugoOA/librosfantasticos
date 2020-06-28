@@ -95,7 +95,7 @@ export class RegisterComponent implements OnInit {
       return;
     }
 
-    this.auth.signUp(this.email.value, this.password.value);
+    this.auth.signUp(this.email.value, this.password.value, this.usuario.value);
   }
 
 }

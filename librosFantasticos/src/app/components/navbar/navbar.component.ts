@@ -12,10 +12,6 @@ export class NavbarComponent implements OnInit {
   constructor(public auth: AuthService, private access: AccesibilidadService) { }
 
   ngOnInit(): void {
-    this.auth.userData.subscribe((data)=>
-    {
-      console.log(data.uid);
-    })
   }
 
   changeAccess()
@@ -32,6 +28,5 @@ export class NavbarComponent implements OnInit {
   {
     this.access.getSpeech(msg);
   }
-
 
 }
