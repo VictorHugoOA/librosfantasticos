@@ -79,6 +79,9 @@ import { ToastrModule } from 'ngx-toastr';
 import { LoginComponent } from './components/login/login.component';
 import { AccesibilidadService } from './components/Services/accesibilidad.service';
 
+//Realizar peticiones
+import { HttpClientModule } from '@angular/common/http';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -150,7 +153,8 @@ import { AccesibilidadService } from './components/Services/accesibilidad.servic
     QRCodeModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    HttpClientModule
   ],
   providers: [LibrosService, AuthService, AccesibilidadService],
   bootstrap: [AppComponent]

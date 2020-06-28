@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AccesibilidadService } from '../Services/accesibilidad.service';
 
 @Component({
   selector: 'app-about',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AboutComponent implements OnInit {
   portada="../../../assets/img/portada.png";
-  constructor() { }
+  constructor(private access: AccesibilidadService) { }
 
   ngOnInit(): void {
+    this.speech("Libros fantasticos... Biblioteca virtual")
+  }
+
+  speech(msg: string)
+  {
+    this.access.getSpeech(msg);
   }
 
 }

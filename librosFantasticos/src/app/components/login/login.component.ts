@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
 
-  constructor(public access: AccesibilidadService, public auth: AuthService, private toastr: ToastrService) {
+  constructor(private access: AccesibilidadService, private auth: AuthService, private toastr: ToastrService) {
     this.loginForm = this.createFormGroup();
    }
 
@@ -73,6 +73,21 @@ export class LoginComponent implements OnInit {
     }
     this.onResetForm();
 
+  }
+
+  speech(msg: string)
+  {
+    this.access.getSpeech(msg);
+  }
+
+  signOut()
+  {
+    this.auth.signOut();
+  }
+
+  getUserData()
+  {
+    return this.auth.userData;
   }
 
 }

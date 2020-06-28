@@ -1,6 +1,6 @@
 <div class="container">
   <div class="col">
-    <input #termino type="text"  class="form-control" placeholder="Buscar libros...">
+    <input #termino type="text" (focus)="speech('Buscar libros')" class="form-control" placeholder="Buscar libros...">
   </div>
   <app-ficha-libro  [items]="Libros"></app-ficha-libro>
   </div>
