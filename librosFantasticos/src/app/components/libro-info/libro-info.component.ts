@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { LibrosService, libro } from '../services/libros.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-libro-info',
@@ -9,7 +10,7 @@ import { LibrosService, libro } from '../services/libros.service';
 })
 export class LibroInfoComponent implements OnInit {
   Libros:libro[];
-  milibro:libro;
+  milibro: libro;
   posicion:number=5;
   constructor( public activedroute: ActivatedRoute, private Libro:LibrosService) { 
     //recuperar posicióm

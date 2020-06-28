@@ -18,6 +18,6 @@
           </div>
       </div>
       <div class="col">
-        <app-qr  [value]="milibro.$key"></app-qr>
+        <app-qr *ngIf="milibro" [value]="milibro.$key"></app-qr>
       </div>
     </div>
