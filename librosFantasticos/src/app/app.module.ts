@@ -71,6 +71,7 @@ import { GraficaComponent } from './components/grafica/grafica.component';
 import { UsuarioComponent } from './components/usuario/usuario.component';
 import { SearchComponent } from './components/search/search.component';
 import { LibroInfoComponent } from './components/libro-info/libro-info.component';
+import { QrComponent } from './components/qr/qr.component';
 
 @NgModule({
   declarations: [
@@ -87,7 +88,8 @@ import { LibroInfoComponent } from './components/libro-info/libro-info.component
     GraficaComponent,
     UsuarioComponent,
     SearchComponent,
-    LibroInfoComponent
+    LibroInfoComponent,
+    QrComponent
   ],
   imports: [
     BrowserModule,

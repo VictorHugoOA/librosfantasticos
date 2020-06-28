@@ -6,6 +6,7 @@ import { AboutComponent } from './components/about/about.component';
 import { PreguntasComponent } from './components/preguntas/preguntas.component';
 import { BibliotecaComponent } from './components/biblioteca/biblioteca.component';
 import { AdminComponent } from './components/admin/admin.component';
+import { LibroInfoComponent } from './components/libro-info/libro-info.component';
 
 
 
@@ -16,7 +17,8 @@ const routes: Routes = [
   {path: "About", component:AboutComponent},
   {path: "Preguntas", component:PreguntasComponent},
   {path: "Admin", component:AdminComponent},
-  {path: "**", pathMatch:'full', redirectTo:"Home"},
+  {path: "Libro/:key", component:LibroInfoComponent},
+  {path: "**", pathMatch:'full', redirectTo:"Home"}
   ];
   
 
