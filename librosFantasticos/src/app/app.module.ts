@@ -63,6 +63,7 @@ import { environment } from 'src/environments/environment';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireModule } from '@angular/fire';
 import { AdminComponent } from './components/admin/admin.component';
+import { AngularFireStorageModule } from '@angular/fire/storage';
 
 //QR Y GRAFICAS
 import { QRCodeModule } from 'angularx-qrcode';
@@ -154,7 +155,8 @@ import { HttpClientModule } from '@angular/common/http';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     ToastrModule.forRoot(),
-    HttpClientModule
+    HttpClientModule,
+    AngularFireStorageModule
   ],
   providers: [LibrosService, AuthService, AccesibilidadService],
   bootstrap: [AppComponent]
