@@ -1,16 +1,18 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PrestamosService {
 
-  constructor(private db: AngularFirestore) { }
+  constructor(private db: AngularFirestore, private httpClient: HttpClient) { }
 
-  getDiasPrestamo()
+  consulta(url:string)
   {
-    return this.db.collection('dias');
+      return this.httpClient.get(url);
+    }
   }
 
-}
+
