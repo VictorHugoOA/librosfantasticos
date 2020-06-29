@@ -95,8 +95,7 @@ export class RegisterComponent implements OnInit {
       return;
     }
 
-    this.toastr.success("Se han guardado los datos con exito", "Exito");
-    this.auth.signUp(this.email.value, this.password.value);
+    this.auth.signUp(this.email.value, this.password.value, this.usuario.value);
   }
 
 }

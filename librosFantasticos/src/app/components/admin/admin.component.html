@@ -27,7 +27,7 @@
             <input 
                 class="form-control"
                 type="file"
-                formControlName="img">
+                formControlName="img" accept=".jpg, .png" (change)="onUpload($event)">
           </div>
         </div>
         <div class="form-group row">
@@ -38,9 +38,31 @@
           </div>
         </div>
         <div class="form-group row">
+          <label class="col-2 text-center col-form-label">No. Fisicos</label>
+          <div class="col-7">
+            <input 
+                class="form-control"
+                type="number"
+                formControlName="fisico">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-2 text-center col-form-label">Edición electronica</label>
+          <div class="col-7">
+            <input 
+                class="form-control"
+                type="checkbox"
+                formControlName="electronico">
+          </div>
+        </div>
+        <div class="form-group row">
             <label class="col-2 text-center col-form-label">&nbsp;</label>
-            <div class="input-group col-md-8">
-                <button mat-fab color="warn" type="submit"><mat-icon>send</mat-icon></button>
+            <div class="input-group col-md-3">
+                <button mat-fab color="warn" *ngIf='(urlImage | async) && (strUrlImage); else nobutton' type="submit"><mat-icon>send</mat-icon></button>
+                <ng-template #nobutton><button mat-fab color="warn" disabled=true type="submit"><mat-icon>send</mat-icon></button></ng-template>
+              </div>
+              <div class="input-group col-md-4">
+                <button mat-fab color="warn" type="submit" (click)="resetForm()"><mat-icon>cached</mat-icon></button>
               </div>
           </div>
        
@@ -52,20 +74,29 @@
       <app-grafica></app-grafica>
     </div>
   </div>
-  <div class="row mt-4 table-responsive">
-      <table>
+  <div class="row mt-4 table-responsive  contenedor-tabla">
+    <h1>Ejemplares</h1>
+      <table class="tabla">
           <thead>
               <tr>
                   <th>Titulo</th>
                   <th>Autor</th>
                   <th>Portada</th>
                   <th>Sinopsis</th>
-                  <th>Eliminar</th>
-                  <th>Modificar</th>
+                  <th>No. Fisicos</th>
+                  <th>Electronico</th>
               </tr>
           </thead>
-            <tr>
-                <td></td>
+            <tr *ngFor="let libro of Libros, let i = index">
+                <td>{{libro.nombre}}</td>
+                <td>{{libro.autor}}</td>
+                <td><img [src]="libro.img" class="portada img-fluid"alt=""></td>
+                <td>{{libro.sinopsis}}</td>
+                <td style="text-align: center;">   {{libro.fisico}}</td>
+                <td *ngIf="libro.electronico;else nohay"><mat-icon>done</mat-icon> </td>
+                <ng-template #nohay> <td><mat-icon>clear</mat-icon></td></ng-template>
+                <td > <button mat-fab color="primary" (click)="borrarLibro(libro.$key)"><mat-icon>delete</mat-icon></button></td>
+                <td ><button mat-fab color="success" (click)="setSelected(libro)"><mat-icon>edit</mat-icon></button></td>
             </tr>
           <th></th>
       </table>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LibrosService, libro } from '../services/libros.service';
+import { AccesibilidadService } from '../Services/accesibilidad.service';
 
 
 @Component({
@@ -12,7 +13,7 @@ export class HomeComponent implements OnInit {
   libroRand:libro[] = [];
   logo="../../../assets/img/logo.png";
   
-  constructor(private mislibros:LibrosService) { }
+  constructor(private mislibros:LibrosService, private access: AccesibilidadService) { }
 
   ngOnInit(): void {
   this.mislibros.getLibros().snapshotChanges().subscribe((data)=>
@@ -47,6 +48,13 @@ export class HomeComponent implements OnInit {
         
       
     });
+    this.speech("Bienvenido a libros fantasticos... Y donde encontrarlos");
   }
+
+  speech(msg: string)
+  {
+    this.access.getSpeech(msg);
+  }
+
 
 }

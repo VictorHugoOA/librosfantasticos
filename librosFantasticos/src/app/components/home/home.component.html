@@ -2,11 +2,11 @@
     <mat-card id="cabecera" layout-align="center center">
         <mat-card-header style="text-align: center;">
             <mat-card-title>
-                <h1> <b>¡Bienvenidos!</b> </h1>
+                <h1 (click)="speech('Bienvenidos')"> <b>¡Bienvenidos!</b> </h1>
             </mat-card-title>
         </mat-card-header>
         <mat-card-content>
-           <img id="logo"[src]="logo" alt=""> <h2>Libros fantásticos... Y donde encontrarlos</h2>
+           <img (click)="speech('Libros fantasticos')" id="logo"[src]="logo" alt=""> <h2>Libros fantásticos... Y donde encontrarlos</h2>
         </mat-card-content>
     </mat-card>
 
@@ -15,6 +15,6 @@
                     
        
 <div class="container">
-    <h2>¡Novedades!</h2>
+    <h2 (click)="speech('Novedades')">¡Novedades!</h2>  
    <app-ficha-libro  [items]="libroRand"></app-ficha-libro>
   </div>

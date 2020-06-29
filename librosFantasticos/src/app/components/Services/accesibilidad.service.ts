@@ -18,4 +18,9 @@ export class AccesibilidadService {
     }
   }
 
+  changeAccess()
+  {
+    this.activeAccess = !this.activeAccess;
+  }
+
 }

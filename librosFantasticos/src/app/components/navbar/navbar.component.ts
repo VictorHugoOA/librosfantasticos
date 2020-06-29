@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../Services/auth/auth.service';
+import { AccesibilidadService } from '../Services/accesibilidad.service';
 
 @Component({
   selector: 'app-navbar',
@@ -7,9 +9,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
   logo='../../../assets/img/logo.png';
-  constructor() { }
+  constructor(public auth: AuthService, private access: AccesibilidadService) { }
 
   ngOnInit(): void {
+  }
+
+  changeAccess()
+  {
+    this.access.changeAccess();
+  }
+
+  getAccess()
+  {
+    return this.access.activeAccess;
+  }
+
+  speech(msg: string)
+  {
+    this.access.getSpeech(msg);
   }
 
 }

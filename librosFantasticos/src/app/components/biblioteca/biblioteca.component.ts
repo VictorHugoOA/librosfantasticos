@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LibrosService,libro } from '../services/libros.service';
+import { AccesibilidadService } from '../Services/accesibilidad.service';
 
 @Component({
   selector: 'app-biblioteca',
@@ -8,7 +9,7 @@ import { LibrosService,libro } from '../services/libros.service';
 })
 export class BibliotecaComponent implements OnInit {
   Libros:libro[];
-  constructor(private mislibros:LibrosService) { }
+  constructor(private mislibros:LibrosService, private access: AccesibilidadService) { }
 
   ngOnInit(): void {
     this.mislibros.getLibros().snapshotChanges().subscribe((data)=>
@@ -27,4 +28,10 @@ export class BibliotecaComponent implements OnInit {
         console.log(this.Libros);
     });
   }
+
+  speech(msg: string)
+  {
+    this.access.getSpeech(msg);
+  }
+
 }

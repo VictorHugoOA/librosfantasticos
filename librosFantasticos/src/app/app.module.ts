@@ -63,6 +63,7 @@ import { environment } from 'src/environments/environment';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireModule } from '@angular/fire';
 import { AdminComponent } from './components/admin/admin.component';
+import { AngularFireStorageModule } from '@angular/fire/storage';
 
 //QR Y GRAFICAS
 import { QRCodeModule } from 'angularx-qrcode';
@@ -76,6 +77,11 @@ import { RegisterComponent } from './components/register/register.component';
 
 //Toastr para las notificaciones.
 import { ToastrModule } from 'ngx-toastr';
+import { LoginComponent } from './components/login/login.component';
+import { AccesibilidadService } from './components/Services/accesibilidad.service';
+
+//Realizar peticiones
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -91,7 +97,8 @@ import { ToastrModule } from 'ngx-toastr';
     FichaLibroComponent,
     GraficaComponent,
     UsuarioComponent,
-    RegisterComponent
+    RegisterComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -147,9 +154,11 @@ import { ToastrModule } from 'ngx-toastr';
     QRCodeModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    HttpClientModule,
+    AngularFireStorageModule
   ],
-  providers: [LibrosService, AuthService],
+  providers: [LibrosService, AuthService, AccesibilidadService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
