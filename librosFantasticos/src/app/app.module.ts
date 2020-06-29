@@ -87,6 +87,7 @@ import { AccesibilidadService } from './components/Services/accesibilidad.servic
 
 //Realizar peticiones
 import { HttpClientModule } from '@angular/common/http';
+import { PrestamosService } from './components/Services/prestamos/prestamos.service';
 
 @NgModule({
   declarations: [
@@ -167,7 +168,7 @@ import { HttpClientModule } from '@angular/common/http';
     AngularFireStorageModule,
     AngularFireAnalyticsModule
   ],
-  providers: [LibrosService, AuthService, AccesibilidadService],
+  providers: [LibrosService, AuthService, AccesibilidadService, PrestamosService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
