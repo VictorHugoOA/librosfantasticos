@@ -16,12 +16,7 @@ export class QrComponent implements OnInit {
   
     
    }
-   /*Indexrandom() {
-    this.index=Math.floor(Math.random() * 10) + 0;  
-    console.log(this.index);
-    this.qrdata= this.randoms[this.index];
-    console.log(this.qrdata);
-  }*/
+
   ngOnInit(): void {
     console.log(this.value);
 
