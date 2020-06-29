@@ -27,6 +27,7 @@ const routes: Routes = [
   { path: "Libro/:key", component: LibroInfoComponent },
   { path: "Buscar/:b", component: SearchComponent },
   { path: "Ingresar", component: LoginComponent },
+  { path: "Usuario", component:UsuarioComponent},
   { path: "**", pathMatch: 'full', redirectTo: "Home" },
   { path: "**", pathMatch: 'full', redirectTo: "Home" }
 ];
