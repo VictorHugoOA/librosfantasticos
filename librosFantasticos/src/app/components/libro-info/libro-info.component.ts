@@ -4,6 +4,7 @@ import { LibrosService, libro } from '../services/libros.service';
 import { Observable } from 'rxjs';
 import { FormControl, Validators } from '@angular/forms';
 import { AuthService } from '../Services/auth/auth.service';
+import { AccesibilidadService } from '../Services/accesibilidad.service';
 
 @Component({
   selector: 'app-libro-info',
@@ -15,7 +16,7 @@ export class LibroInfoComponent implements OnInit {
   milibro: libro;
   posicion:string;
   bandera:boolean;
-  constructor( public activedroute: ActivatedRoute, private Libro:LibrosService, public auth: AuthService) { 
+  constructor( public activedroute: ActivatedRoute, private Libro:LibrosService, public auth: AuthService, private access: AccesibilidadService) { 
     //recuperar posicióm
     this.activedroute.params.subscribe(params => {
       this.posicion=params['key'];
@@ -27,6 +28,7 @@ export class LibroInfoComponent implements OnInit {
     console.log(this.tipoPrestamo.value);
     if(this.tipoPrestamo.invalid){
       this.bandera = true;
+      this.speech("Debe seleccionar una opcion de prestamo para añadirlo");
     }else{
     this.bandera=false;
     }
@@ -56,11 +58,15 @@ export class LibroInfoComponent implements OnInit {
           if(x.$key == this.posicion){
             this.milibro=new libro();
             this.milibro=x;
+            this.speech('Informacion de ' + this.milibro.nombre + '. Autor: ' + this.milibro.autor + '... ' + this.milibro.sinopsis);
           }
       
         })
     });
   }
-
+  speech(msg: string)
+  {
+    this.access.getSpeech(msg);
+  }
 
 }
