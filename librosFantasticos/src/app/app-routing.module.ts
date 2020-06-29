@@ -24,9 +24,9 @@ const routes: Routes = [
   {path: "Preguntas", component:PreguntasComponent},
   {path: "Admin", component:AdminComponent},
   {path:"Registro", component:RegisterComponent},
-  {path: "**", pathMatch:'full', redirectTo:"Home"},
   {path: "Libro/:key", component:LibroInfoComponent},
   {path: "Buscar/:b", component:SearchComponent},
+  {path: "**", pathMatch:'full', redirectTo:"Home"},
   {path: "**", pathMatch:'full', redirectTo:"Home"}
   ];
   
