@@ -30,6 +30,12 @@ export class LibrosService {
     return this.httpClient.get(`http://localhost:8080/get-book?nombre=${nombre}`);
   }
 
+  getLibroUid(uid: string)
+  {
+    return this.firestore.collection('libros').doc(uid);
+  }
+
+
   insertLibro(libros: libro) {
     this.productList.add({
       nombre: libros.nombre,
