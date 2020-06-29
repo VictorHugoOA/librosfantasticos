@@ -41,7 +41,6 @@ export class SearchComponent implements OnInit {
       else
       {
         this.encontrada = true;
-        console.log(this.Libros);
       }
     })
    }
