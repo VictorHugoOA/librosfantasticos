@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { LibrosService, libro } from '../services/libros.service';
 import { Observable } from 'rxjs';
 import { FormControl, Validators } from '@angular/forms';
+import { AuthService } from '../Services/auth/auth.service';
 
 @Component({
   selector: 'app-libro-info',
@@ -15,7 +16,7 @@ export class LibroInfoComponent implements OnInit {
   milibro: libro;
   posicion:number;
   bandera:boolean;
-  constructor( public activedroute: ActivatedRoute, private Libro:LibrosService) { 
+  constructor( public activedroute: ActivatedRoute, private Libro:LibrosService, public auth: AuthService) { 
     //recuperar posicióm
     this.activedroute.params.subscribe(params => {
       this.posicion=params['key'];
@@ -57,5 +58,6 @@ export class LibroInfoComponent implements OnInit {
         this.milibro=this.Libros[this.posicion];
     });
   }
+
 
 }

@@ -102,7 +102,7 @@ app.get('/get-qr/:uid', (req, res) =>
 
     query.finally(() =>
     {
-        res.send(`${result.nombre}: ${result.autor}. ${result.sinopsis}`);
+        res.send({msg: `${req.params.uid}: ${result.nombre}, ${result.autor}.`});
     })
 })
 

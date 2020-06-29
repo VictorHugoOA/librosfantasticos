@@ -19,11 +19,6 @@ export class FichaLibroComponent implements OnInit {
     
   }
 
-  getQr(uid: string)
-  {
-    
-  }
-
   speech(msg: string)
   {
     this.access.getSpeech(msg);

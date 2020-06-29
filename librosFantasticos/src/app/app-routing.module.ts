@@ -16,20 +16,21 @@ import { SearchComponent } from './components/search/search.component';
 
 
 
-const routes: Routes = [ 
-  {path: "Home",component:HomeComponent},
-  {path: "Biblioteca", component:BibliotecaComponent},
-  {path: "Contacto", component:ContactoComponent},
-  {path: "About", component:AboutComponent},
-  {path: "Preguntas", component:PreguntasComponent},
-  {path: "Admin", component:AdminComponent},
-  {path:"Registro", component:RegisterComponent},
-  {path: "Libro/:key", component:LibroInfoComponent},
-  {path: "Buscar/:b", component:SearchComponent},
-  {path: "**", pathMatch:'full', redirectTo:"Home"},
-  {path: "**", pathMatch:'full', redirectTo:"Home"}
-  ];
-  
+const routes: Routes = [
+  { path: "Home", component: HomeComponent },
+  { path: "Biblioteca", component: BibliotecaComponent },
+  { path: "Contacto", component: ContactoComponent },
+  { path: "About", component: AboutComponent },
+  { path: "Preguntas", component: PreguntasComponent },
+  { path: "Admin", component: AdminComponent },
+  { path: "Registro", component: RegisterComponent },
+  { path: "Libro/:key", component: LibroInfoComponent },
+  { path: "Buscar/:b", component: SearchComponent },
+  { path: "Ingresar", component: LoginComponent },
+  { path: "**", pathMatch: 'full', redirectTo: "Home" },
+  { path: "**", pathMatch: 'full', redirectTo: "Home" }
+];
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
