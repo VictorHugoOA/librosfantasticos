@@ -62,6 +62,8 @@ import { environment } from 'src/environments/environment';
 //Servicios de Firebase y conexion
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireModule } from '@angular/fire';
+import {AngularFireAnalyticsModule} from '@angular/fire/analytics';
+
 import { AdminComponent } from './components/admin/admin.component';
 
 //QR Y GRAFICAS
@@ -69,6 +71,9 @@ import { QRCodeModule } from 'angularx-qrcode';
 import { FichaLibroComponent } from './components/ficha-libro/ficha-libro.component';
 import { GraficaComponent } from './components/grafica/grafica.component';
 import { UsuarioComponent } from './components/usuario/usuario.component';
+import { SearchComponent } from './components/search/search.component';
+import { LibroInfoComponent } from './components/libro-info/libro-info.component';
+import { QrComponent } from './components/qr/qr.component';
 
 //Servicio de autenticacion
 import { AuthService } from './components/Services/auth/auth.service';
@@ -91,7 +96,10 @@ import { ToastrModule } from 'ngx-toastr';
     FichaLibroComponent,
     GraficaComponent,
     UsuarioComponent,
-    RegisterComponent
+    RegisterComponent,
+    SearchComponent,
+    LibroInfoComponent,
+    QrComponent
   ],
   imports: [
     BrowserModule,
@@ -147,7 +155,8 @@ import { ToastrModule } from 'ngx-toastr';
     QRCodeModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    AngularFireAnalyticsModule
   ],
   providers: [LibrosService, AuthService],
   bootstrap: [AppComponent]
