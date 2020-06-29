@@ -10,7 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 export class SearchComponent implements OnInit {
   b:string;
   encontrada: boolean;
-  Libros:libro;
+  Libros:libro[];
   constructor(private router: ActivatedRoute, private mislibros: LibrosService) {
 
     this.router.params.subscribe((params) => {
@@ -20,8 +20,30 @@ export class SearchComponent implements OnInit {
       this.encontrada = false;
     });
    }
-   BusquedaLibros(b: string){
-
+   async BusquedaLibros(b: string){
+    await this.mislibros.getLibroNombre(b).subscribe((data:any[])=>
+    {
+      this.Libros = [];
+      data.forEach(element =>
+        {
+          let x = new libro();
+          x.$key = element.$key;
+          x.nombre = element.nombre;
+          x.autor = element.autor;
+          x.sinopsis = element.sinopsis;
+          x.img = element.img;
+          this.Libros.push(x);
+        })
+      if(this.Libros.length <= 0)
+      {
+        this.encontrada = false;
+      }
+      else
+      {
+        this.encontrada = true;
+        console.log(this.Libros);
+      }
+    })
    }
 
   ngOnInit(): void {

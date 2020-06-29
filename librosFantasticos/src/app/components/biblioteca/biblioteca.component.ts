@@ -12,7 +12,7 @@ export class BibliotecaComponent implements OnInit {
   constructor(private mislibros:LibrosService, private access: AccesibilidadService) { }
 
   ngOnInit(): void {
-    /*this.mislibros.getLibros().snapshotChanges().subscribe((data)=>
+    this.mislibros.getLibros().snapshotChanges().subscribe((data)=>
     {
       this.Libros = [];
       data.forEach(element =>
@@ -26,23 +26,9 @@ export class BibliotecaComponent implements OnInit {
           this.Libros.push(x);
         })
         console.log(this.Libros);
-    });*/
+    });
 
-    this.mislibros.getLibroNombre("").subscribe((data:any[])=>
-    {
-      this.Libros = [];
-      data.forEach(element =>
-        {
-          console.log(element);
-          let x = new libro();
-          x.$key = element.$key;
-          x.nombre = element.nombre;
-          x.autor = element.autor;
-          x.sinopsis = element.sinopsis;
-          x.img = element.img;
-          this.Libros.push(x);
-        })
-    })
+   
 
   }
 
