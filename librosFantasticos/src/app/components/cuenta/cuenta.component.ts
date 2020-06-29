@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../Services/auth/auth.service';
+import { UsuariosService } from '../Services/usuarios/usuarios.service';
 
 @Component({
   selector: 'app-cuenta',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CuentaComponent implements OnInit {
 
-  constructor() { }
+  constructor(public auth: AuthService, private users: UsuariosService) { }
+
+  user: any = null;
 
   ngOnInit(): void {
+    this.auth.userData.subscribe((el) =>
+    {
+      this.users.getUserAccount(el.uid).snapshotChanges().subscribe((elo) => {
+        this.user = {uid: el.uid, usuario: elo.payload.data()['usuario'], cargos: elo.payload.data()['cargos'], email: elo.payload.data()['email']};
+        console.log(this.user);
+      })
+    })
   }
 
 }

@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../Services/auth/auth.service';
+import { Component, OnInit, Input } from '@angular/core';
 import { Observable } from 'rxjs';
 import { UsuariosService } from '../Services/usuarios/usuarios.service';
 
@@ -10,16 +9,14 @@ import { UsuariosService } from '../Services/usuarios/usuarios.service';
 })
 export class UsuarioComponent implements OnInit {
 
-  userData: any = null;
+  @Input() userData: any;
 
-  constructor(private users: UsuariosService, private auth: AuthService) { }
+  constructor(private users: UsuariosService) { }
 
   ngOnInit(): void {
-    this.auth.userData.subscribe((el:any) =>
+    this.users.getUserPrestamos(this.userData.uid).snapshotChanges().subscribe((el) =>
     {
-      this.users.getUserAccount(el.uid).snapshotChanges().subscribe(element => {
-        this.userData = {email: element.payload.data()['email'], cargos: element.payload.data()['cargos'], usuario: element.payload.data()['usuario']};
-      })
+      console.log(el);
     })
   }
 

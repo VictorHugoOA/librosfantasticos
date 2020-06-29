@@ -12,4 +12,15 @@ export class UsuariosService {
   {
     return this.db.collection('usuarios').doc(uid);
   }
+
+  getUserPrestamos(uid: string)
+  {
+    return this.db.collection(uid);
+  }
+
+  getAllUsers()
+  {
+    return this.db.collection('usuarios');
+  }
+
 }

@@ -6,6 +6,7 @@ import { AngularFireStorage } from '@angular/fire/storage';
 import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
 import { finalize } from 'rxjs/operators';
+import { UsuariosService } from '../Services/usuarios/usuarios.service';
 
 @Component({
   selector: 'app-admin',
@@ -18,12 +19,13 @@ export class AdminComponent implements OnInit {
   //Libros en inventario
   Libros: libro[];
   selectedLibro: string = null;
+  allUsers: any[] = null;
 
   urlImage: Observable<string>;
   strUrlImage: string;
   uploadPercent: Observable<number>;
 
-  constructor(private inventario: LibrosService, private store: AngularFireStorage, private toastr: ToastrService) {
+  constructor(private inventario: LibrosService, private store: AngularFireStorage, private toastr: ToastrService, private users: UsuariosService) {
     // inicialización del formulario
     this.Altas = new FormGroup({
       nombre: new FormControl('', Validators.required),
@@ -51,6 +53,17 @@ export class AdminComponent implements OnInit {
       })
       console.log(this.Libros);
     });
+
+    this.users.getAllUsers().snapshotChanges().subscribe((el) =>
+    {
+      this.allUsers = [];
+      el.forEach(element =>
+        {
+          this.allUsers.push({cargos: element.payload.doc.data()['cargos'], email: element.payload.doc.data()['email'], uid: element.payload.doc.data()['uid'], usuario: element.payload.doc.data()['usuario']})
+        })
+        console.log(this.allUsers);
+    });
+
   }
 
   borrarLibro(id: string) {
