@@ -8,7 +8,7 @@ import { LibrosService } from '../services/libros.service';
 })
 export class QrComponent implements OnInit {
   randoms:string[];
-  qrdata:string= "Hola soy un QR";
+  qrdata:string= null;
   index:number;
 
   @Input() value:string;
@@ -24,7 +24,10 @@ export class QrComponent implements OnInit {
   }*/
   ngOnInit(): void {
     console.log(this.value);
-    this.qrdata=this.value;
+
+    this.info.getLibroQr(this.value).subscribe((data)=>{
+      this.qrdata = data['msg'];
+    });
 
   }
 

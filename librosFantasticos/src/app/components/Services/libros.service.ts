@@ -22,7 +22,12 @@ export class LibrosService {
 
   getLibroQr(uid: string)
   {
-    return this.httpClient.get(`http://localhost:3000/get-qr/${uid}`);
+    return this.httpClient.get(`http://localhost:8080/get-qr/${uid}`);
+  }
+
+  getLibroNombre(nombre: string)
+  {
+    return this.httpClient.get(`http://localhost:8080/get-book?nombre=${nombre}`);
   }
 
   insertLibro(libros: libro) {
