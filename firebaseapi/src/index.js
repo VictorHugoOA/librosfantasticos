@@ -103,6 +103,39 @@ app.get('/get-qr/:uid', (req, res) =>
     })
 })
 
+app.get('/get-days', (req, res) =>
+{
+    let days = db.collection('dias');
+    var val = new Array();
+    let query = days.get().then((snapshot) =>
+        {
+            var i = 0;
+            var getLimit = snapshot._size - 10;
+            snapshot.forEach((el) =>
+            {
+                if(i >= getLimit)
+                {
+                    var strDia = '';
+                    var strMes = '';
+                    if(el.get('dia') < 10)
+                        strDia = '0' + el.get('dia');
+                    else
+                        strDia = el.get('dia');
+
+                    if(el.get('mes') < 10)
+                        strMes = '0' + el.get('mes');
+                    else
+                        strMes = el.get('mes');
+
+                    val.push({uid: strDia + strMes + el.get('ano'), dia: el.get('dia'), mes: el.get('mes'), ano: el.get('ano'), prestamos: el.get('prestamos')})
+                }
+                i++
+            })
+            console.log(snapshot._size);
+        })
+    query.finally(()=> {res.json(val)})
+})
+
 app.post('/send-email', (req, res)=>
 {
     var mailOptions = {
