@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { LibrosService, libro } from '../services/libros.service';
 import { Observable } from 'rxjs';
+import { FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-libro-info',
@@ -9,6 +10,7 @@ import { Observable } from 'rxjs';
   styleUrls: ['./libro-info.component.css']
 })
 export class LibroInfoComponent implements OnInit {
+  tipoPrestamo = new FormControl('', Validators.required);
   Libros:libro[];
   milibro: libro;
   posicion:number;
@@ -21,10 +23,11 @@ export class LibroInfoComponent implements OnInit {
     this.bandera=false;
   }
   option(){
-    if($('#fisico').is(':checked') || $('#electronico').is(':checked')){
-
+    console.log(this.tipoPrestamo.value);
+    if(this.tipoPrestamo.invalid){
+      this.bandera = true;
     }else{
-    this.bandera=true;
+    this.bandera=false;
     }
   }
   revisar():boolean{

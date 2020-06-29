@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row no-gutters">
-    <div class="row inline-block ficha">
+    <div *ngIf="milibro" class="row inline-block ficha">
       <div class="col-md-4">
         <img class="portada" *ngIf="milibro" src="{{milibro.img}}" alt="">
       </div>
@@ -14,11 +14,11 @@
         <p *ngIf="milibro">{{milibro.sinopsis}}</p>
         <hr>
         <div class="form-check form-check-inline" *ngIf="milibro.electronico">
-          <input #electronico class="form-check-input" type="radio" name="inlineRadioOptions" id="fisico" value="option1">
+          <input [formControl]="tipoPrestamo" class="form-check-input" type="radio" name="inlineRadioOptions" value="option1">
           <label class="form-check-label" for="electronico">Electronico</label>
         </div>
         <div class="form-check form-check-inline" *ngIf="milibro.fisico > 0">
-          <input #fisico class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+          <input class="form-check-input" type="radio" [formControl]="tipoPrestamo" name="inlineRadioOptions" value="option2">
           <label class="form-check-label" for="fisico">Fisico</label>
         </div>
         <button *ngIf="revisar()" type="submit" class="btn btn-outline-danger" (click)="option()">Añadir a Prestamo</button>

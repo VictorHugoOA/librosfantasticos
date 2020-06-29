@@ -23,6 +23,7 @@
     "@angular/platform-browser": "~9.1.2",
     "@angular/platform-browser-dynamic": "~9.1.2",
     "@angular/router": "~9.1.2",
+    "@types/jquery": "^3.5.0",
     "angularx-qrcode": "^2.3.4",
     "chart.js": "^2.9.3",
     "firebase": "^7.15.4",
