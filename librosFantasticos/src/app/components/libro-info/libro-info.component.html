@@ -9,6 +9,7 @@
         <app-qr *ngIf="milibro" [value]="milibro.$key"></app-qr>
         <hr>
         <h1 *ngIf="milibro">{{milibro.nombre}}</h1>
+        <h2  *ngIf="milibro">{{milibro.autor}}</h2>
         <p *ngIf="milibro">{{milibro.sinopsis}}</p>
         <hr>
         <button routerLink="/Biblioteca'"  class="btn btn-outline-danger">
