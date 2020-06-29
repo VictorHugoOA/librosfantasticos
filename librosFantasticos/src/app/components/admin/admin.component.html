@@ -58,11 +58,8 @@
         <div class="form-group row">
             <label class="col-2 text-center col-form-label">&nbsp;</label>
             <div class="input-group col-md-3">
-                <button mat-fab color="warn" *ngIf='(urlImage | async) && (strUrlImage); else nobutton' type="submit"><mat-icon>send</mat-icon></button>
+                <button mat-fab color="warn" *ngIf='((urlImage | async) && (strUrlImage)) || editable(); else nobutton' type="submit"><mat-icon>send</mat-icon></button>
                 <ng-template #nobutton><button mat-fab color="warn" disabled=true type="submit"><mat-icon>send</mat-icon></button></ng-template>
-              </div>
-              <div class="input-group col-md-4">
-                <button mat-fab color="warn" type="submit" (click)="resetForm()"><mat-icon>cached</mat-icon></button>
               </div>
               <div class="input-group col-md-4">
                 <button mat-fab color="warn" type="submit" (click)="resetForm()"><mat-icon>cached</mat-icon></button>

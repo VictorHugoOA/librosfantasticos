@@ -57,16 +57,22 @@ export class AdminComponent implements OnInit {
     this.inventario.borrarLibro(id);
   }
 
+  editable()
+  {
+    return this.inventario.edit;
+  }
+
   setSelected(libros: libro) {
     this.inventario.edit = true;
     this.Altas.setValue({
       nombre: libros.nombre,
       autor: libros.autor,
-      img: libros.img,
+      img: '',
       sinopsis: libros.sinopsis,
       fisico: libros.fisico,
       electronico: libros.electronico
     })
+    this.strUrlImage = libros.img;
     this.selectedLibro = libros.$key;
 
   }
