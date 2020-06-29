@@ -7,6 +7,7 @@ import { PreguntasComponent } from './components/preguntas/preguntas.component';
 import { BibliotecaComponent } from './components/biblioteca/biblioteca.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { LibroInfoComponent } from './components/libro-info/libro-info.component';
+import { SearchComponent } from './components/search/search.component';
 
 
 
@@ -18,6 +19,7 @@ const routes: Routes = [
   {path: "Preguntas", component:PreguntasComponent},
   {path: "Admin", component:AdminComponent},
   {path: "Libro/:key", component:LibroInfoComponent},
+  {path: "Buscar/:b", component:SearchComponent},
   {path: "**", pathMatch:'full', redirectTo:"Home"}
   ];
   

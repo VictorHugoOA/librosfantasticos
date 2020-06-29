@@ -1,1 +1,13 @@
-<p>search works!</p>
+<app-ficha-libro  *ngIf="this.encontrada; else NoExiste" [items]="Libros"></app-ficha-libro>
+
+<ng-template #NoExiste>
+    <div class="alert alert-danger" role="alert">
+        El libro <strong>{{this.b}}</strong> no existe
+      </div>
+      <div class="col text-center">
+        <button routerLink="/Biblioteca'"  class="btn btn-outline-danger">
+            Regresar
+        </button>
+      </div>
+    
+</ng-template>
