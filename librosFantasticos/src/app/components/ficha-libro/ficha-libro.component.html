@@ -1,12 +1,12 @@
 <div class="container">
     <div class="card-columns animated fadeIn">
 
-      <div class="card " *ngFor="let item of this.items, let key= index">
+      <div class="card " *ngFor="let item of this.items">
         <img src="{{item.img}}" class="card-img-top  img-fluid" alt="...">
         <div class="card-body">
           <h5 class="card-title">{{item.nombre}}</h5>
           <p class="card-text"><small class="text-muted">{{item.autor}}</small></p>
-          <a [routerLink]="['/Libro',key]" class="btn btn-outline-info btn-block">Ver mas</a>
+          <a [routerLink]="['/Libro', item.$key]" class="btn btn-outline-info btn-block">Ver mas</a>
         </div>
       </div>
     </div>
