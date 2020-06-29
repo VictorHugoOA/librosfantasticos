@@ -28,7 +28,7 @@ export class AdminComponent implements OnInit {
     this.Altas = new FormGroup({
       nombre: new FormControl('', Validators.required),
       autor: new FormControl('', Validators.required),
-      img: new FormControl('', Validators.required),
+      img: new FormControl(''),
       sinopsis: new FormControl('', Validators.required),
       fisico: new FormControl('', Validators.required),
       electronico: new FormControl()
@@ -64,6 +64,7 @@ export class AdminComponent implements OnInit {
 
   setSelected(libros: libro) {
     this.inventario.edit = true;
+    this.strUrlImage = libros.img;
     this.Altas.setValue({
       nombre: libros.nombre,
       autor: libros.autor,
