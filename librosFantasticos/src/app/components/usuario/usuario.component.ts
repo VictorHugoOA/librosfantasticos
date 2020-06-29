@@ -12,6 +12,7 @@ export class UsuarioComponent implements OnInit {
   @Input() userData: any;
   prestamos: any[] = null;
 
+//prestamos: prestamo[];
   constructor(private users: UsuariosService) { }
 
   ngOnInit(): void {

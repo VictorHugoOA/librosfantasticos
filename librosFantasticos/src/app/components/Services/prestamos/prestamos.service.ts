@@ -41,3 +41,14 @@ export class PrestamosService {
 
 
 }
+
+export class prestamo{
+  fechaInicio:string;
+  fechaEntrega:string;
+  $key: string;
+  nombre: string;
+  autor: string;
+  img: string;
+  modalidad: boolean;
+  estado: boolean;
+}
