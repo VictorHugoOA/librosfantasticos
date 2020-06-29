@@ -87,7 +87,6 @@ import { AccesibilidadService } from './components/Services/accesibilidad.servic
 
 //Realizar peticiones
 import { HttpClientModule } from '@angular/common/http';
-import { CuentaComponent } from './components/cuenta/cuenta.component';
 
 @NgModule({
   declarations: [
@@ -107,8 +106,7 @@ import { CuentaComponent } from './components/cuenta/cuenta.component';
     LoginComponent,
     SearchComponent,
     LibroInfoComponent,
-    QrComponent,
-    CuentaComponent
+    QrComponent
   ],
   imports: [
     BrowserModule,
