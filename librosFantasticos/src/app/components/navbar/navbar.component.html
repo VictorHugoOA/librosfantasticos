@@ -29,7 +29,7 @@
             <button mat-button class="nav-item nav-link active" (focus)="speech('Usuario')" routerLink="/Usuario">{{(auth.userData | async)?.email}}</button>
         </li>
         <li class="nav-item active" *ngIf="auth.userData | async">
-          <button mat-button (click)="auth.signOut()" (focus)="speech('Log Out')" class="nav-item nav-link active"><mat-icon>exit_to_app</mat-icon>Log Out</button>
+          <button mat-button (click)="auth.signOut()" routerLink="/Home" (focus)="speech('Log Out')" class="nav-item nav-link active"><mat-icon>exit_to_app</mat-icon>Log Out</button>
       </li>
         <li class="nav-item active">
             <button mat-button class="nav-item nav-link active" (focus)="speech('Accesibilidad')" (click)="changeAccess()"><mat-icon *ngIf="getAccess()">visibility</mat-icon><mat-icon *ngIf="!getAccess()">visibility_off</mat-icon></button>
