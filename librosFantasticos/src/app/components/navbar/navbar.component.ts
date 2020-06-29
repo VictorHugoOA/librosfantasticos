@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../Services/auth/auth.service';
 import { AccesibilidadService } from '../Services/accesibilidad.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -9,8 +10,14 @@ import { AccesibilidadService } from '../Services/accesibilidad.service';
 })
 export class NavbarComponent implements OnInit {
   logo='../../../assets/img/logo.png';
-  constructor(public auth: AuthService, private access: AccesibilidadService) { }
+  b:string;
+  constructor(private router: Router, public auth: AuthService, private access: AccesibilidadService) { }
+  busqueda(b:string){
+    this.b=b;
+    (<HTMLInputElement>document.getElementById("buscar")).value="";
+    this.router.navigate(['/Buscar',this.b]);
 
+  }
   ngOnInit(): void {
   }
 

@@ -36,8 +36,8 @@
         </li>
       </ul>
       <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" (focus)="speech('Buscar')" placeholder="Search" aria-label="Search">
-        <button class="btn btn-danger my-2 my-sm-0" (focus)="speech('Boton buscar')" type="submit">Search</button>
+        <input #buscar id= "buscar" class="form-control mr-sm-2"  (focus)="speech('Buscar')" type="search" placeholder="Buscar libro" aria-label="Search">
+        <button class="btn btn-danger my-2 my-sm-0" (click)="busqueda(buscar.value)" (focus)="speech('Boton buscar')" type="submit">Search</button>
       </form>
     </div>
   </nav>
