@@ -91,6 +91,7 @@ import { PrestamosService } from './components/Services/prestamos/prestamos.serv
 import { CuentaComponent } from './components/cuenta/cuenta.component';
 import { UsuariosService } from './components/Services/usuarios/usuarios.service';
 
+
 @NgModule({
   declarations: [
     AppComponent,

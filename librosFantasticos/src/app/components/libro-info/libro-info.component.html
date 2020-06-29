@@ -14,12 +14,12 @@
         <div *ngIf="auth.userData | async">
           <div class="form-check form-check-inline" *ngIf="milibro.electronico">
             <input [formControl]="tipoPrestamo" (focus)="speech('Prestamo electronico')" class="form-check-input" type="radio" name="inlineRadioOptions"
-              value="option1">
+              value="electronico">
             <label class="form-check-label" for="electronico">Electronico</label>
           </div>
           <div class="form-check form-check-inline" *ngIf="milibro.fisico > 0">
             <input class="form-check-input" (focus)="speech('Prestamo fisico')" type="radio" [formControl]="tipoPrestamo" name="inlineRadioOptions"
-              value="option2">
+              value="fisico">
             <label class="form-check-label" for="fisico">Fisico</label>
           </div>
           <button *ngIf="revisar()" type="submit" class="btn btn-outline-danger" (focus)="speech('Añadir a prestamo: ' + milibro.nombre)" (click)="option()">Añadir a
