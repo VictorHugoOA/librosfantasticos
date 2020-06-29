@@ -21,7 +21,7 @@ export class AuthService {
       console.log('Succesfully Signed Up: ', res);
       this.userData.subscribe((user)=>{
         console.log(user.email);
-        this.allUsers.add({uid: user.uid, usuario: nick, email: email});
+        this.allUsers.add({uid: user.uid, usuario: nick, email: email, cargos: 0});
       })
       this.toastr.success("Se han guardado los datos con exito", "Exito");
     }).catch(error => {
