@@ -25,7 +25,7 @@
               value="fisico">
             <label class="form-check-label" for="fisico">Fisico</label>
           </div>
-          <button *ngIf="revisar()" type="submit" class="btn btn-outline-danger" (focus)="speech('Añadir a prestamo: ' + milibro.nombre)" (click)="option()">Añadir a
+          <button *ngIf="revisar()" type="submit" class="btn btn-outline-danger" (focus)="speech('Añadir a prestamo: ' + milibro.nombre)" routerLink="/Usuario"(click)="option()">Añadir a
             Prestamo</button>
           <div *ngIf="this.bandera" class="alert alert-danger" role="alert">
             Debes elegir una modalidad
