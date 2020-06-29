@@ -10,13 +10,19 @@ import { UsuariosService } from '../Services/usuarios/usuarios.service';
 export class UsuarioComponent implements OnInit {
 
   @Input() userData: any;
+  prestamos: any[] = null;
 
   constructor(private users: UsuariosService) { }
 
   ngOnInit(): void {
     this.users.getUserPrestamos(this.userData.uid).snapshotChanges().subscribe((el) =>
     {
-      console.log(el);
+      this.prestamos = [];
+      el.forEach((obj) =>
+      {
+        this.prestamos.push({fecha: obj.payload.doc.data()['fecha'], libro: obj.payload.doc.data()['libro'], prestamo: obj.payload.doc.data()['prestamo']});
+      })
+      console.log(this.prestamos);
     })
   }
 
