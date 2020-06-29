@@ -23,7 +23,7 @@ export class GraficaComponent implements OnInit {
 
       data.forEach(el => {
         this.dat.push(el.payload.doc.data()['prestamos']);
-        this.label.push(el.payload.doc.data()['dia'] + ' de' + this.meses[el.payload.doc.data()['mes']]);
+        this.label.push(el.payload.doc.data()['dia'] + ' de ' + this.meses[el.payload.doc.data()['mes'] - 1 ]);
       });
       this.chart = new Chart("my chart", {
         type: 'line',

@@ -89,6 +89,7 @@ import { AccesibilidadService } from './components/Services/accesibilidad.servic
 import { HttpClientModule } from '@angular/common/http';
 import { PrestamosService } from './components/Services/prestamos/prestamos.service';
 import { CuentaComponent } from './components/cuenta/cuenta.component';
+import { UsuariosService } from './components/Services/usuarios/usuarios.service';
 
 @NgModule({
   declarations: [
@@ -170,7 +171,7 @@ import { CuentaComponent } from './components/cuenta/cuenta.component';
     AngularFireStorageModule,
     AngularFireAnalyticsModule
   ],
-  providers: [LibrosService, AuthService, AccesibilidadService, PrestamosService],
+  providers: [LibrosService, AuthService, AccesibilidadService, PrestamosService, UsuariosService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
