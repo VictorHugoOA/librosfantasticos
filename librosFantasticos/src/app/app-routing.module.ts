@@ -13,6 +13,7 @@ import { UsuarioComponent } from './components/usuario/usuario.component';
 
 import { LibroInfoComponent } from './components/libro-info/libro-info.component';
 import { SearchComponent } from './components/search/search.component';
+import { CuentaComponent } from './components/cuenta/cuenta.component';
 
 
 
@@ -27,7 +28,7 @@ const routes: Routes = [
   { path: "Libro/:key", component: LibroInfoComponent },
   { path: "Buscar/:b", component: SearchComponent },
   { path: "Ingresar", component: LoginComponent },
-  { path: "Usuario", component:UsuarioComponent},
+  { path: "Usuario", component:CuentaComponent},
   { path: "**", pathMatch: 'full', redirectTo: "Home" },
   { path: "**", pathMatch: 'full', redirectTo: "Home" }
 ];

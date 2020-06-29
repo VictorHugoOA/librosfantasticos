@@ -88,6 +88,7 @@ import { AccesibilidadService } from './components/Services/accesibilidad.servic
 //Realizar peticiones
 import { HttpClientModule } from '@angular/common/http';
 import { PrestamosService } from './components/Services/prestamos/prestamos.service';
+import { CuentaComponent } from './components/cuenta/cuenta.component';
 
 @NgModule({
   declarations: [
@@ -107,7 +108,8 @@ import { PrestamosService } from './components/Services/prestamos/prestamos.serv
     LoginComponent,
     SearchComponent,
     LibroInfoComponent,
-    QrComponent
+    QrComponent,
+    CuentaComponent
   ],
   imports: [
     BrowserModule,
