@@ -11,14 +11,15 @@ import { FormControl, Validators } from '@angular/forms';
 })
 export class LibroInfoComponent implements OnInit {
   tipoPrestamo = new FormControl('', Validators.required);
-  Libros:libro[];
   milibro: libro;
-  posicion:number;
+  posicion:string;
   bandera:boolean;
+
   constructor( public activedroute: ActivatedRoute, private Libro:LibrosService) { 
     //recuperar posicióm
     this.activedroute.params.subscribe(params => {
       this.posicion=params['key'];
+     
     });
     this.bandera=false;
   }
@@ -40,7 +41,7 @@ export class LibroInfoComponent implements OnInit {
   ngOnInit(): void {
     this.Libro.getLibros().snapshotChanges().subscribe((data)=>
     {
-      this.Libros = [];
+    
       data.forEach(element =>
         {
           let x = new libro();
@@ -51,10 +52,13 @@ export class LibroInfoComponent implements OnInit {
           x.img = element.payload.doc.data().img;
           x.fisico = element.payload.doc.data().fisico;
           x.electronico = element.payload.doc.data().electronico;
-          this.Libros.push(x);
+
+          if(x.$key == this.posicion){
+            this.milibro=new libro();
+            this.milibro=x;
+          }
+      
         })
-        this.milibro=new libro();
-        this.milibro=this.Libros[this.posicion];
     });
   }
 
