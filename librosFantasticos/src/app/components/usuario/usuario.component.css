@@ -1,0 +1,33 @@
+.portada{
+    width:100%;
+    max-width:200px;
+    height: auto;
+    max-height: 300px;
+}
+
+td, th{
+    padding: 5px;
+    text-align: justify;
+    align-content: flex-start;
+}
+
+.contenedor-tabla{
+    padding: 20px;
+    background-color:azure;
+    border-radius: 20px;
+
+}
+
+tr:hover {
+    background-color:#a3f9ff;
+    border-radius: 20px;
+  
+  }
+  h1{
+    /*border: 1px double #eb5317;*/
+  border-style: double;
+  border-color: #eb5317;
+  font-family: 'Bellota', cursive;
+  text-align: center;
+    
+  }
