@@ -20,8 +20,8 @@ export class AuthService {
     this.auth.createUserWithEmailAndPassword(email, password).then(res => {
       console.log('Succesfully Signed Up: ', res);
       this.userData.subscribe((user)=>{
-        console.log(user.uid);
-        this.allUsers.add({uid: user.uid, usuario: nick});
+        console.log(user.email);
+        this.allUsers.add({uid: user.uid, usuario: nick, email: email});
       })
       this.toastr.success("Se han guardado los datos con exito", "Exito");
     }).catch(error => {
