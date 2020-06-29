@@ -9,14 +9,11 @@ admin.initializeApp({
 });
 
 let transport = nodemailer.createTransport({
-    host: 'smtp.mailtrap.io',
-    port: 465,
-    secureConnection: false,
-    secure: false,
+    service: 'Gmail',
     auth: 
     {
-        user: '231da8589ee2ee',
-        pass: '642a7ac4fc3430'
+        user: 'victoralvarez.vhoa@gmail.com',
+        pass: 'reckxzgmpfxrijgr'
     }
 });
 
@@ -110,8 +107,8 @@ app.post('/send-email', (req, res)=>
 {
     var mailOptions = {
         from: `${req.body.from}`,
-        to: 'victoralvarez.vhoa@gmail.com',
-        subject: 'Comentarios acerca de la pagina',
+        to: 'victoralvarez.vhoa@gmail.com, floresstiker99@gmail.com',
+        subject: `Comentarios acerca de la pagina: ${req.body.user}`,
         text: `${req.body.msg} --Atte ${req.body.user}`
     }
 
