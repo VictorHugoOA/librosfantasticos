@@ -18,10 +18,12 @@ export class LibroInfoComponent implements OnInit {
   posicion: string;
   bandera: boolean;
   user: any = null;
+  
   constructor(public activedroute: ActivatedRoute, private Libro: LibrosService, public auth: AuthService, private access: AccesibilidadService, private prestamos: PrestamosService) {
     //recuperar posicióm
     this.activedroute.params.subscribe(params => {
       this.posicion = params['key'];
+      console.log(this.posicion);
 
     });
     this.bandera = false;

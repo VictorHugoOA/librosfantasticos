@@ -9,6 +9,7 @@
         <app-qr *ngIf="milibro" [value]="milibro.$key"></app-qr>
         <hr>
         <h1 *ngIf="milibro">{{milibro.nombre}}</h1>
+        <h2  *ngIf="milibro">{{milibro.autor}}</h2>
         <p *ngIf="milibro">{{milibro.sinopsis}}</p>
         <hr>
         <button routerLink="/Biblioteca'"  class="btn btn-outline-danger">
@@ -25,7 +26,7 @@
               value="fisico">
             <label class="form-check-label" for="fisico">Fisico</label>
           </div>
-          <button *ngIf="revisar()" type="submit" class="btn btn-outline-danger" (focus)="speech('Añadir a prestamo: ' + milibro.nombre)" (click)="option()">Añadir a
+          <button *ngIf="revisar()" type="submit" class="btn btn-outline-danger" (focus)="speech('Añadir a prestamo: ' + milibro.nombre)" routerLink="/Usuario"(click)="option()">Añadir a
             Prestamo</button>
           <div *ngIf="this.bandera" class="alert alert-danger" role="alert">
             Debes elegir una modalidad
