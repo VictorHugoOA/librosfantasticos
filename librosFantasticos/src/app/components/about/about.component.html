@@ -1,0 +1,42 @@
+<div>
+    <mat-card (click)="speech('Libros fantasticos... Biblioteca virtual')">
+        <mat-card-header>
+            <mat-card-title>
+                <b>Libros fantásticos</b>
+            </mat-card-title>
+            <mat-card-subtitle>
+                Biblioteca virtual
+            </mat-card-subtitle>
+        </mat-card-header>
+        <mat-divider></mat-divider>
+        <mat-card-content class="logo-about">
+            <img mat-card-image [src]="portada" style="max-width: 400px; margin-top: 1rem;">
+        </mat-card-content>
+    </mat-card>
+
+    <mat-card (click)="speech('¿Quienes somos?... Somos un grupo de compañeros de la carrera que buscan realizar una biblioteca virtual para nuestro proyecto
+    de tecnologías web. Nuestro proposito es realizar un aplicación de una biblioteca virtual para obtener
+    distintos ejemplares de libros clásicos, modernos, juveniles, históricos, etc. Facilitar las operaciones
+    presenciales de una biblioteca, de manera virtual.')">
+        <mat-card-header>
+            <mat-card-title>
+                <b>¿Quiénes somos?</b>
+            </mat-card-title>
+            <mat-card-subtitle>
+                Libros fantásticos... Y donde encontrarlos
+                <mat-divider></mat-divider>
+            </mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            Somos un grupo de compañeros de la carrera que buscan realizar una biblioteca virtual para nuestro proyecto
+            de tecnologías web. Nuestro proposito es realizar un aplicación de una biblioteca virtual para obtener
+            distintos ejemplares de libros clásicos, modernos, juveniles, históricos, etc. Facilitar las operaciones
+            presenciales de una biblioteca, de manera virtual.
+        </mat-card-content>
+        <mat-card-footer>
+            <span>
+                <b>Libros fantásticos - 2020</b>
+            </span>
+        </mat-card-footer>
+    </mat-card>
+</div>

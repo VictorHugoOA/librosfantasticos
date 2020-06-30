@@ -1,0 +1,2 @@
+<app-admin *ngIf="(auth.userData | async)?.email == 'a@gmail.com' "></app-admin>
+<app-usuario *ngIf="user" [userData]="user"></app-usuario>
