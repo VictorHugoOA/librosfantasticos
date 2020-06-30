@@ -68,7 +68,7 @@ export class ContactoComponent implements OnInit {
     console.log(this.comment.value);
     console.log(this.user.value);
 
-    this.httpClient.post('http://localhost:8080/send-email', {from: this.email.value, msg: this.comment.value, user: this.user.value}).subscribe((data)=>
+    this.httpClient.post('https://us-central1-libros-fantsticos.cloudfunctions.net/widgets/send-email', {from: this.email.value, msg: this.comment.value, user: this.user.value}).subscribe((data)=>
     {
       console.log(data);
     })

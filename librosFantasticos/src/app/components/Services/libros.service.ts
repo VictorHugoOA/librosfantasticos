@@ -22,12 +22,12 @@ export class LibrosService {
 
   getLibroQr(uid: string)
   {
-    return this.httpClient.get(`http://localhost:8080/get-qr/${uid}`);
+    return this.httpClient.get(`https://us-central1-libros-fantsticos.cloudfunctions.net/widgets/get-qr?uid=${uid}`);
   }
 
   getLibroNombre(nombre: string)
   {
-    return this.httpClient.get(`http://localhost:8080/get-book?nombre=${nombre}`);
+    return this.httpClient.get(`https://us-central1-libros-fantsticos.cloudfunctions.net/widgets/get-book?nombre=${nombre}`);
   }
 
   getLibroUid(uid: string)

@@ -26,8 +26,9 @@ export class SearchComponent implements OnInit {
       this.Libros = [];
       data.forEach(element =>
         {
+          console.log(element);
           let x = new libro();
-          x.$key = element.$key;
+          x.$key = element.id;
           x.nombre = element.nombre;
           x.autor = element.autor;
           x.sinopsis = element.sinopsis;

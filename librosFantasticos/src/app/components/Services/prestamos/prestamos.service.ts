@@ -10,7 +10,7 @@ export class PrestamosService {
   constructor(private db: AngularFirestore, private http: HttpClient) { }
 
   getDiasPrestamo() {
-    return this.http.get('http://localhost:8080/get-days');
+    return this.http.get('https://us-central1-libros-fantsticos.cloudfunctions.net/widgets/get-days');
     //return this.db.collection('dias');
   }
 

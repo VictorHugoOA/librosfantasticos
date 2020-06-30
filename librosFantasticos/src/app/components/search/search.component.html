@@ -1,4 +1,4 @@
-<app-ficha-libro  *ngIf="this.encontrada; else NoExiste" [items]="Libros"></app-ficha-libro>
+<app-ficha-libro  *ngIf="(this.encontrada && Libros); else NoExiste" [items]="Libros"></app-ficha-libro>
 
 <ng-template #NoExiste>
     <div class="alert alert-danger" role="alert">

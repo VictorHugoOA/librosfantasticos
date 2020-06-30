@@ -1,12 +1,19 @@
-const app = require('./app');
-const bookRoute = require('./routes/books');
+const functions = require('firebase-functions');
 const admin = require('firebase-admin');
 const nodemailer = require('nodemailer');
+const express = require('express');
+const morgan = require('morgan');
+const bodyParser = require('body-parser');
 const cors = require('cors');
-var account = require('../libros-fantsticos-firebase-adminsdk-yc2xp-9a72fb90d5.json');
-admin.initializeApp({
-    credential: admin.credential.cert(account)
-});
+
+const app = express();
+//middleware
+app.use(morgan("dev"));
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
+app.use(cors());
+
+admin.initializeApp();
 
 let transport = nodemailer.createTransport({
     service: 'Gmail',
@@ -19,9 +26,6 @@ let transport = nodemailer.createTransport({
 
 
 const db = admin.firestore();
-
-app.listen(app.get('port'));
-app.get('/', bookRoute);
 
 app.post('/add-book', (req, res) => {
     const newBook = {
@@ -49,26 +53,30 @@ app.get('/get-book', (req, res) =>
         let i = 0;
         query = books.get().then(snapshot => {
             snapshot.forEach( doc => {
-                if(doc.data().nombre.indexOf(req.query.nombre) != -1 && i < limitSize)
+                if(doc.data().nombre.indexOf(req.query.nombre) !== -1 && i < limitSize)
                 {
                     val.push({id: doc.id, autor: doc.data().autor, img: doc.data().img, nombre: doc.data().nombre, sinopsis: doc.data().sinopsis});
                     i++;
                 }
             })
-        })
+            res.send(val);
+            return;
+        }).catch()
     }
     else if(req.query.autor)
     {
         let i = 0;
         query = books.get().then(snapshot => {
             snapshot.forEach( doc => {
-                if(doc.data().autor.indexOf(req.query.autor) != -1 && i < limitSize)
+                if(doc.data().autor.indexOf(req.query.autor) !== -1 && i < limitSize)
                 {
                     val.push({id: doc.id, autor: doc.data().autor, img: doc.data().img, nombre: doc.data().nombre, sinopsis: doc.data().sinopsis});
                     i++;
                 }
             })
-        })
+            res.send(val);
+            return;
+        }).catch()
     }
     else{
         let i = 0;
@@ -80,12 +88,10 @@ app.get('/get-book', (req, res) =>
                     i++;
                 }
             })
-        })
+            res.send(val);
+            return;
+        }).catch()
     }
-    query.finally(()=>
-    {
-        res.send(val);
-    })
 });
 
 app.get('/get-qr', (req, res) =>
@@ -95,12 +101,9 @@ app.get('/get-qr', (req, res) =>
     let query = book.get().then(doc=>
         {
             result = {nombre: doc.get('nombre'), autor: doc.get('autor'), sinopsis: doc.get('sinopsis')};
-        })
-
-    query.finally(() =>
-    {
-        res.send({msg: `${req.params.uid}: ${result.nombre}, ${result.autor}.`});
-    })
+            res.send({msg: `${req.query.uid}: ${result.nombre}, ${result.autor}.`});
+            return;
+        }).catch();
 })
 
 app.get('/get-days', (req, res) =>
@@ -132,8 +135,9 @@ app.get('/get-days', (req, res) =>
                 i++
             })
             console.log(snapshot._size);
-        })
-    query.finally(()=> {res.json(val)})
+            res.json(val)
+            return;
+        }).catch();
 })
 
 app.post('/send-email', (req, res)=>
@@ -161,4 +165,4 @@ app.post('/send-email', (req, res)=>
 
 });
 
-console.log("Server on port: ", app.get('port'));
+exports.widgets = functions.https.onRequest(app);
