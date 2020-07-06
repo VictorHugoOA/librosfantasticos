@@ -7,6 +7,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
 import { finalize } from 'rxjs/operators';
 import { UsuariosService } from '../Services/usuarios/usuarios.service';
+import { AccesibilidadService } from '../Services/accesibilidad.service';
 
 @Component({
   selector: 'app-admin',
@@ -25,7 +26,7 @@ export class AdminComponent implements OnInit {
   strUrlImage: string;
   uploadPercent: Observable<number>;
 
-  constructor(private inventario: LibrosService, private store: AngularFireStorage, private toastr: ToastrService, private users: UsuariosService) {
+  constructor(private inventario: LibrosService, private store: AngularFireStorage, private toastr: ToastrService, private users: UsuariosService, private access: AccesibilidadService) {
     // inicialización del formulario
     this.Altas = new FormGroup({
       nombre: new FormControl('', Validators.required),
@@ -128,6 +129,7 @@ export class AdminComponent implements OnInit {
       return;
     }
     this.toastr.error("Lo siento, todos los campos deben estar llenos", "Todos los campos deben estar llenos");
+    this.speech('Lo siento, todos los campos deben estar llenos para almacenar el libro');
   }
 
   onUpload(event) {
@@ -140,6 +142,10 @@ export class AdminComponent implements OnInit {
     task.snapshotChanges().pipe(finalize(() => { this.urlImage = ref.getDownloadURL();
       this.urlImage.subscribe((el)=> this.strUrlImage = el)
       })).subscribe();
+  }
+
+  speech(msg: string) {
+    this.access.getSpeech(msg);
   }
 
 }

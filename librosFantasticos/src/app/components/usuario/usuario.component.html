@@ -13,29 +13,29 @@
     <div class="row mt-4   contenedor-tabla">
       <h1>Prestamos</h1>
 
-        <table *ngIf="prestamos && libros" class=" table-responsive">
+        <table *ngIf="allowed" class=" table-responsive">
 
             <thead>
                 <tr>
-                    <th>Titulo</th>
-                    <th>Autor</th>
-                    <th>Portada</th>
-                    <th>Sinopsis</th>
-                    <th>Fisico/Electronico</th>
-                    <th>Fecha prestamo</th>
-                    <th>Fecha entrega</th>
-                    <th>Estado</th>
+                    <th (click)='speech("Titulo")'>Titulo</th>
+                    <th (click)='speech("Autor")'>Autor</th>
+                    <th (click)='speech("Portada")'>Portada</th>
+                    <th (click)='speech("Sinopsis")'>Sinopsis</th>
+                    <th (click)='speech("Tipo de prestamo")'>Fisico/Electronico</th>
+                    <th (click)='speech("Fecha de prestamo")'>Fecha prestamo</th>
+                    <th (click)='speech("Fecha de entrega")'>Fecha entrega</th>
+                    <th (click)='speech("Estado")'>Estado</th>
            
                 </tr>
             </thead>
               <tr *ngFor="let item of prestamos; let i = index">
-                  <td>{{libros[i].nombre}}</td>
-                  <td>{{libros[i].autor}}</td>
-                  <td><img [src]="libros[i].img" class="portada img-fluid"alt=""></td>
-                  <td>{{libros[i].sinopsis}}</td>
-                  <td>{{item.modalidad}}</td>
-                  <td>{{item.fechaInicio | date}}</td>
-                  <td>{{item.fechaEntrega | date}}</td>
+                  <td (click)='speech(libros[i].nombre)' *ngIf="allowed">{{libros[i].nombre}}</td>
+                  <td (click)='speech(libros[i].autor)' *ngIf="allowed">{{libros[i].autor}}</td>
+                  <td *ngIf="allowed"><img [src]="libros[i].img" class="portada img-fluid"alt=""></td>
+                  <td (click)='speech(libros[i].sinopsis)' *ngIf="allowed">{{libros[i].sinopsis}}</td>
+                  <td (click)='speech(item.modalidad)'>{{item.modalidad}}</td>
+                  <td (click)='speech(item.fechaInicio.toDateString())'>{{item.fechaInicio | date}}</td>
+                  <td (click)='speech(item.fechaEntrega.toDateString())'>{{item.fechaEntrega | date}}</td>
                   <td>{{(today < item.fechaEntrega)}}</td>
          
                 

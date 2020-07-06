@@ -12,6 +12,7 @@ export class CuentaComponent implements OnInit {
   constructor(public auth: AuthService, private users: UsuariosService) { }
 
   user: any = null;
+  allowed: boolean = false;
 
   ngOnInit(): void {
     this.auth.userData.subscribe((el) =>
@@ -19,6 +20,7 @@ export class CuentaComponent implements OnInit {
       this.users.getUserAccount(el.uid).snapshotChanges().subscribe((elo) => {
         this.user = {uid: el.uid, usuario: elo.payload.data()['usuario'], cargos: elo.payload.data()['cargos'], email: elo.payload.data()['email']};
         console.log(this.user);
+        this.allowed = true;
       })
     })
   }

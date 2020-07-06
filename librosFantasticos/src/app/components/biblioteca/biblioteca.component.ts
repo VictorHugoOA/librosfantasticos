@@ -40,7 +40,7 @@ export class BibliotecaComponent implements OnInit {
       data.forEach(element =>
         {
           let x = new libro();
-          x.$key = element.$key;
+          x.$key = element.id;
           x.nombre = element.nombre;
           x.autor = element.autor;
           x.sinopsis = element.sinopsis;

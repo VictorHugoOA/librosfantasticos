@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { UsuariosService } from '../Services/usuarios/usuarios.service';
 import { prestamo } from '../Services/prestamos/prestamos.service';
 import { LibrosService, libro } from '../services/libros.service';
+import { AccesibilidadService } from '../Services/accesibilidad.service';
 
 @Component({
   selector: 'app-usuario',
@@ -16,8 +17,11 @@ export class UsuarioComponent implements OnInit {
   today:Date = new Date();
   libros:libro[] = null;
 
+  allowed: boolean = false;
+
 //prestamos: prestamo[];
-  constructor(private users: UsuariosService, private libroSer: LibrosService) { }
+  constructor(private users: UsuariosService, private libroSer: LibrosService, private access: AccesibilidadService) {
+   }
 
   ngOnInit(): void {
     this.users.getUserPrestamos(this.userData.uid).snapshotChanges().subscribe((el) =>
@@ -51,7 +55,12 @@ export class UsuarioComponent implements OnInit {
 
       console.log(this.prestamos);
       console.log(this.libros)
+      this.allowed = true;
     })
+  }
+
+  speech(msg: string) {
+    this.access.getSpeech(msg);
   }
 
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { libro, LibrosService } from '../services/libros.service';
 import { ActivatedRoute } from '@angular/router';
+import { AccesibilidadService } from '../Services/accesibilidad.service';
 
 @Component({
   selector: 'app-search',
@@ -11,7 +12,7 @@ export class SearchComponent implements OnInit {
   b:string;
   encontrada: boolean;
   Libros:libro[]=[];
-  constructor(private router: ActivatedRoute, private mislibros: LibrosService) {
+  constructor(private router: ActivatedRoute, private mislibros: LibrosService, private access: AccesibilidadService) {
 
     this.router.params.subscribe((params) => {
       this.b= params['b'];
@@ -36,6 +37,7 @@ export class SearchComponent implements OnInit {
         })
       if(this.Libros.length <= 0 || b == "")
       {
+        this.speech("El libro " + b + " no se encuentra en la base");
         this.encontrada = false;
       }
       else
@@ -47,5 +49,9 @@ export class SearchComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  speech(msg: string) {
+    this.access.getSpeech(msg);
+  }
+
 
 }
