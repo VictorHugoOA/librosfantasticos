@@ -12,15 +12,14 @@ export class FichaLibroComponent implements OnInit {
 
   @Input() items:libro[]=[];
 
-  mislibros:libro[]=[];
+
   constructor(private router:Router, private access: AccesibilidadService) { 
 
   }
   
 
   ngOnInit(): void {
-    console.log(this.items);
-    this.mislibros=this.items;
+  
   }
 
 
