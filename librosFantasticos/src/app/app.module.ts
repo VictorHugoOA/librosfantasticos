@@ -90,6 +90,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { PrestamosService } from './components/Services/prestamos/prestamos.service';
 import { CuentaComponent } from './components/cuenta/cuenta.component';
 import { UsuariosService } from './components/Services/usuarios/usuarios.service';
+import { UsuariosComponent } from './components/usuarios/usuarios.component';
 
 
 @NgModule({
@@ -111,7 +112,8 @@ import { UsuariosService } from './components/Services/usuarios/usuarios.service
     SearchComponent,
     LibroInfoComponent,
     QrComponent,
-    CuentaComponent
+    CuentaComponent,
+    UsuariosComponent
   ],
   imports: [
     BrowserModule,
