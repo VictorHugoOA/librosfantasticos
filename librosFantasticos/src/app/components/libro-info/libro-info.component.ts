@@ -18,10 +18,12 @@ export class LibroInfoComponent implements OnInit {
   milibro: libro;
   posicion: string;
   bandera: boolean;
+  loading:boolean;
   user: any = null;
   
   constructor(public activedroute: ActivatedRoute, private toastr: ToastrService, private Libro: LibrosService, public auth: AuthService, private access: AccesibilidadService, private prestamos: PrestamosService) {
-    //recuperar posicióm
+    //recuperar posición
+    this.loading=true;
     this.activedroute.params.subscribe(params => {
       this.posicion = params['key'];
       console.log(this.posicion);
@@ -66,6 +68,8 @@ export class LibroInfoComponent implements OnInit {
           this.milibro = x;
           this.speech('Informacion de ' + this.milibro.nombre + '. Autor: ' + this.milibro.autor + '... ' + this.milibro.sinopsis);
         }
+
+        this.loading=false;
 
       })
     });

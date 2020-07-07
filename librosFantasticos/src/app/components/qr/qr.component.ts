@@ -10,10 +10,11 @@ export class QrComponent implements OnInit {
   randoms:string[];
   qrdata:string= null;
   index:number;
+  loading:boolean;
 
   @Input() value:string;
   constructor(private info:LibrosService) {
-  
+    this.loading=true;
     
    }
 
@@ -22,6 +23,7 @@ export class QrComponent implements OnInit {
 
     this.info.getLibroQr(this.value).subscribe((data)=>{
       this.qrdata = data['msg'];
+      this.loading=false;
     });
 
   }

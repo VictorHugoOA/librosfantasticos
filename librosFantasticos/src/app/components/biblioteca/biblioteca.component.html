@@ -1,6 +1,4 @@
 <div class="container">
-  <div class="col">
-    <!--<input #termino type="text" (focus)="speech('Buscar libros')" (keyup)="buscar(termino.value)" class="form-control" placeholder="Buscar libros...">-->
-  </div>
+  <app-loading *ngIf="this.loading"></app-loading>
   <app-ficha-libro  [items]="Libros"></app-ficha-libro>
-  </div>
+</div>

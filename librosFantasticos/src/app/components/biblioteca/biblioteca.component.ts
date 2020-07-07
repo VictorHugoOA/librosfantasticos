@@ -9,11 +9,15 @@ import { AccesibilidadService } from '../Services/accesibilidad.service';
 })
 export class BibliotecaComponent implements OnInit {
   Libros:libro[];
-  constructor(private mislibros:LibrosService, private access: AccesibilidadService) { }
+  loading:boolean;
+  constructor(private mislibros:LibrosService, private access: AccesibilidadService) { 
+    this.loading=true;
+  }
 
   ngOnInit(): void {
     this.mislibros.getLibros().snapshotChanges().subscribe((data)=>
     {
+      this.loading=false;
       this.Libros = [];
       data.forEach(element =>
         {
@@ -26,6 +30,7 @@ export class BibliotecaComponent implements OnInit {
           this.Libros.push(x);
         })
         console.log(this.Libros);
+      
     });
 
    

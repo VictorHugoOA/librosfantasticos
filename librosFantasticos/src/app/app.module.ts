@@ -90,6 +90,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { PrestamosService } from './components/Services/prestamos/prestamos.service';
 import { CuentaComponent } from './components/cuenta/cuenta.component';
 import { UsuariosService } from './components/Services/usuarios/usuarios.service';
+
+
 import { UsuariosComponent } from './components/usuarios/usuarios.component';
 import { LoadingComponent } from './components/loading/loading.component';
 
