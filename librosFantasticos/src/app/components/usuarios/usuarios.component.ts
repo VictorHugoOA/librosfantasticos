@@ -54,6 +54,8 @@ export class UsuariosComponent implements OnInit {
           y.autor = mm.payload.data()['autor'];
           y.sinopsis = mm.payload.data()['sinopsis'];
           y.img = mm.payload.data()['img'];
+          y.fisico = mm.payload.data()['fisico'];
+          y.electronico = mm.payload.data()['electronico']
           this.libros.push(y);
         })
       })
@@ -62,6 +64,17 @@ export class UsuariosComponent implements OnInit {
       console.log(this.libros)
       this.allowed = true;
     })
+  }
+
+  eliminar(prestamo: any, libro: any)
+  {
+    if(prestamo.modalidad == 'fisico')
+    {
+      libro.fisico += 1;
+      this.libroSer.updateLibro(libro);
+    }
+    this.users.deletePrestamoUser(this.userData.uid, prestamo);
+    location.reload();
   }
 
 }

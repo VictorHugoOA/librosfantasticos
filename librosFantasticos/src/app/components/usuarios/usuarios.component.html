@@ -1,10 +1,8 @@
-<div *ngIf="userData.usuario != 'Admin'" class="col mt-5">
-  <h2> Usuario: {{userData.usuario}} 
-    <h3>Cargos:</h3>
-  </h2>
- 
-  <div class="col mt-4 table-responsive  contenedor-tabla">
-    
+<div *ngIf="userData.usuario != 'Admin'" class="row mt-4">
+  <div *ngIf="allowed && (prestamos.length > 0);" class="row mt-4 table-responsive  contenedor-tabla">
+    <!--este div tiene el ngfor de estado-->
+    <h2>Usuario:{{userData.usuario}}</h2>
+    <h3>Cargos: ${{userData.cargos | number :'1.2-2'}} MXN <i class="fas fa-coins"></i></h3>
     <table class="tabla">
       <thead>
         <tr>
@@ -28,7 +26,7 @@
           <td>{{item.fechaInicio | date}}</td>
           <td>{{item.fechaEntrega | date}}</td>
           <td>{{item.modalidad}}</td>
-          <td><button mat-stroked-button color="warn"><i class="fas fa-times-circle"></i></button></td>
+          <td><button (click)="eliminar(item, libros[i]);" mat-stroked-button color="warn"><i class="fas fa-times-circle"></i></button></td>
         </tr>
       </tbody>
     </table>
