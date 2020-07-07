@@ -4,6 +4,7 @@ import { UsuariosService } from '../Services/usuarios/usuarios.service';
 import { prestamo } from '../Services/prestamos/prestamos.service';
 import { LibrosService, libro } from '../services/libros.service';
 import { AccesibilidadService } from '../Services/accesibilidad.service';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-usuario',
@@ -24,16 +25,18 @@ export class UsuarioComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    this.users.getUserPrestamos(this.userData.uid).snapshotChanges().subscribe((el) =>
+    this.users.getUserPrestamos(this.userData.uid).snapshotChanges().pipe(take(1)).subscribe( async (el) =>
     {
       this.prestamos = [];
       this.libros = [];
-      el.forEach((obj) =>
+      await el.forEach((obj) =>
       {
         var x = new prestamo();
         x.fechaInicio = new Date(obj.payload.doc.data()['fecha'].toDate());
         x.fechaEntrega = new Date();
-        x.fechaEntrega.setDate(x.fechaInicio.getDate() + 3);
+        x.fechaEntrega.setTime(x.fechaInicio.getTime() + (1000*60*60*24)*3);
+        x.renovable = obj.payload.doc.data()['renovable'];
+        console.log( this.today <= x.fechaEntrega);
         x.$key = obj.payload.doc.id;
 
         x.modalidad = obj.payload.doc.data()['prestamo'];
@@ -61,6 +64,13 @@ export class UsuarioComponent implements OnInit {
 
   speech(msg: string) {
     this.access.getSpeech(msg);
+  }
+
+  renovar(prestamo: any)
+  {
+    let n = new Date(prestamo.fechaInicio);
+    n.setTime(n.getTime() + (1000*60*60*24)*3);
+    this.users.getUserPrestamos(this.userData.uid).doc(prestamo.$key).update({fecha: n, renovable: false});
   }
 
 }
