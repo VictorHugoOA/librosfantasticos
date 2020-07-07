@@ -145,8 +145,8 @@ app.post('/send-email', (req, res)=>
     var mailOptions = {
         from: `${req.body.from}`,
         to: 'victoralvarez.vhoa@gmail.com, floresstiker99@gmail.com',
-        subject: `Comentarios acerca de la pagina: ${req.body.user}`,
-        text: `${req.body.msg} --Atte ${req.body.user}`
+        subject: `Comentarios acerca de la pagina: ${req.body.from}`,
+        text: `${req.body.msg} --Atte ${req.body.user}. email:${req.body.from}`
     }
 
     transport.sendMail(mailOptions, (error, info) =>

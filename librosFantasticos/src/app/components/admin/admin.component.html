@@ -6,66 +6,64 @@
         <div class="form-group row">
           <label class="col-2 text-center col-form-label">Titulo</label>
           <div class="col-7">
-            <input (focus)="speech('Ingresar titulo')"
-                class="form-control" 
-                type="text"
-                formControlName="nombre">
+            <input (focus)="speech('Ingresar titulo')" class="form-control" type="text" formControlName="nombre">
           </div>
         </div>
         <div class="form-group row">
           <label class="col-2 text-center col-form-label">Autor</label>
           <div class="col-7">
-            <input  (focus)="speech('Ingresar autor')"
-                class="form-control" 
-                type="text"
-                formControlName="autor">
+            <input (focus)="speech('Ingresar autor')" class="form-control" type="text" formControlName="autor">
           </div>
         </div>
         <div class="form-group row">
           <label class="col-2 text-center col-form-label">Portada</label>
           <div class="col-7">
-            <input (focus)="speech('Ingresar portada')"
-                class="form-control"
-                type="file"
-                formControlName="img" accept=".jpg, .png" (change)="onUpload($event)">
+            <input (focus)="speech('Ingresar portada')" class="form-control" type="file" formControlName="img"
+              accept=".jpg, .png" (change)="onUpload($event)">
           </div>
         </div>
         <div class="form-group row">
           <label class="col-2 text-center col-form-label">Sinopsis</label>
           <div class="col-7">
-            <textarea class="form-control" (focus)="speech('Ingresar sinopsis')" placeholder="Sinopsis" formControlName="sinopsis"></textarea>
-           
+            <textarea class="form-control" (focus)="speech('Ingresar sinopsis')" placeholder="Sinopsis"
+              formControlName="sinopsis"></textarea>
+
           </div>
         </div>
         <div class="form-group row">
-          <label  class="col-2 text-center col-form-label">No. Fisicos</label>
+          <label class="col-2 text-center col-form-label">No. Fisicos</label>
           <div class="col-7">
-            <input (focus)="speech('Cantidad de libros fisicos')"
-                class="form-control"
-                type="number"
-                formControlName="fisico">
+            <input (focus)="speech('Cantidad de libros fisicos')" class="form-control" type="number"
+              formControlName="fisico">
           </div>
         </div>
         <div class="form-group row">
           <label class="col-2 text-center col-form-label">Edición electronica</label>
           <div class="col-7">
-            <input (focus)="speech('Disponibilidad de edicion electronica')"
-                class="form-control"
-                type="checkbox"
-                formControlName="electronico">
+            <input (focus)="speech('Disponibilidad de edicion electronica')" class="form-control" type="checkbox"
+              formControlName="electronico">
           </div>
         </div>
         <div class="form-group row">
-            <label class="col-2 text-center col-form-label">&nbsp;</label>
-            <div class="input-group col-md-3">
-                <button mat-fab color="warn" *ngIf='((urlImage | async) && (strUrlImage)) || editable(); else nobutton' type="submit"><mat-icon>send</mat-icon></button>
-                <ng-template #nobutton><button (focus)="speech('Dar de alta el libro')" mat-fab color="warn" disabled=true type="submit"><mat-icon>send</mat-icon></button></ng-template>
-              </div>
-              <div class="input-group col-md-4">
-                <button mat-fab color="warn" type="submit" (focus)="speech('Reiniciar formulario de altas')" (click)="resetForm()"><mat-icon>cached</mat-icon></button>
-              </div>
+          <label class="col-2 text-center col-form-label">&nbsp;</label>
+          <div class="input-group col-md-3">
+            <button mat-fab color="warn" *ngIf='((urlImage | async) && (strUrlImage)) || editable(); else nobutton'
+              type="submit">
+              <mat-icon>send</mat-icon>
+            </button>
+            <ng-template #nobutton><button (focus)="speech('Dar de alta el libro')" mat-fab color="warn" disabled=true
+                type="submit">
+                <mat-icon>send</mat-icon>
+              </button></ng-template>
           </div>
-       
+          <div class="input-group col-md-4">
+            <button mat-fab color="warn" type="submit" (focus)="speech('Reiniciar formulario de altas')"
+              (click)="resetForm()">
+              <mat-icon>cached</mat-icon>
+            </button>
+          </div>
+        </div>
+
       </form>
 
     </div>
@@ -76,30 +74,47 @@
   </div>
   <div class="row mt-4 table-responsive  contenedor-tabla">
     <h1>Ejemplares</h1>
-      <table class="tabla">
-          <thead>
-              <tr>
-                  <th>Titulo</th>
-                  <th>Autor</th>
-                  <th>Portada</th>
-                  <th>Sinopsis</th>
-                  <th>No. Fisicos</th>
-                  <th>Electronico</th>
-              </tr>
-          </thead>
-            <tr *ngFor="let libro of Libros, let i = index">
-                <td (click)="speech(libro.nombre)">{{libro.nombre}}</td>
-                <td (click)="speech(libro.autor)">{{libro.autor}}</td>
-                <td><img [src]="libro.img" class="portada img-fluid"alt=""></td>
-                <td (click)="speech(libro.sinopsis)">{{libro.sinopsis}}</td>
-                <td (click)="speech(libro.fisico)" style="text-align: center;">   {{libro.fisico}}</td>
-                <td *ngIf="libro.electronico;else nohay"><mat-icon>done</mat-icon> </td>
-                <ng-template #nohay> <td><mat-icon>clear</mat-icon></td></ng-template>
-                <td > <button mat-fab color="primary" (focus)="speech('Borrar ' + libro.nombre)" (click)="borrarLibro(libro.$key)"><mat-icon>delete</mat-icon></button></td>
-                <td ><button mat-fab color="success" (focus)="speech('Editar ' + libro.nombre)" (click)="setSelected(libro)"><mat-icon>edit</mat-icon></button></td>
-            </tr>
-        
-      </table>
+    <table class="tabla">
+      <thead>
+        <tr>
+          <th>Titulo</th>
+          <th>Autor</th>
+          <th>Portada</th>
+          <th>Sinopsis</th>
+          <th>No. Fisicos</th>
+          <th>Electronico</th>
+        </tr>
+      </thead>
+      <tr *ngFor="let libro of Libros, let i = index">
+        <td (click)="speech(libro.nombre)">{{libro.nombre}}</td>
+        <td (click)="speech(libro.autor)">{{libro.autor}}</td>
+        <td><img [src]="libro.img" class="portada img-fluid" alt=""></td>
+        <td (click)="speech(libro.sinopsis)">{{libro.sinopsis}}</td>
+        <td (click)="speech(libro.fisico)" style="text-align: center;"> {{libro.fisico}}</td>
+        <td *ngIf="libro.electronico;else nohay">
+          <mat-icon>done</mat-icon>
+        </td>
+        <ng-template #nohay>
+          <td>
+            <mat-icon>clear</mat-icon>
+          </td>
+        </ng-template>
+        <td> <button mat-fab color="primary" (focus)="speech('Borrar ' + libro.nombre)"
+            (click)="borrarLibro(libro.$key)">
+            <mat-icon>delete</mat-icon>
+          </button></td>
+        <td><button mat-fab color="success" (focus)="speech('Editar ' + libro.nombre)" (click)="setSelected(libro)">
+            <mat-icon>edit</mat-icon>
+          </button></td>
+      </tr>
+
+    </table>
   </div>
-  <app-usuarios></app-usuarios>
+
+  <h1>Prestamos por usuario</h1>
+  <div *ngIf="allUsers">
+    <div *ngFor="let user of allUsers">
+      <app-usuarios [userData]="user"></app-usuarios>
+    </div>
+  </div>
 </div>
