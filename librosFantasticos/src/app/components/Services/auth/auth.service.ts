@@ -29,6 +29,7 @@ export class AuthService {
     }).catch(error => {
       console.log('Something is wrong: ', error.message);
       this.toastr.error(error.message, "Error creando el usuario");
+      
     });
   }
   signIn(email: string, password: string) {
