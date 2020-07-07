@@ -17,6 +17,7 @@ export class UsuarioComponent implements OnInit {
   prestamos: prestamo[] = null;
   today:Date = new Date();
   libros:libro[] = null;
+  cargo: number;
 
   allowed: boolean = false;
 
@@ -27,6 +28,7 @@ export class UsuarioComponent implements OnInit {
   ngOnInit(): void {
     this.users.getUserPrestamos(this.userData.uid).snapshotChanges().pipe(take(1)).subscribe( async (el) =>
     {
+      this.userData.cargos = 0;
       this.prestamos = [];
       this.libros = [];
       await el.forEach((obj) =>
@@ -35,6 +37,10 @@ export class UsuarioComponent implements OnInit {
         x.fechaInicio = new Date(obj.payload.doc.data()['fecha'].toDate());
         x.fechaEntrega = new Date();
         x.fechaEntrega.setTime(x.fechaInicio.getTime() + (1000*60*60*24)*3);
+        if(this.today > x.fechaEntrega)
+        {
+          this.userData.cargos += 10.0;
+        }
         x.renovable = obj.payload.doc.data()['renovable'];
         console.log( this.today <= x.fechaEntrega);
         x.$key = obj.payload.doc.id;
@@ -55,6 +61,8 @@ export class UsuarioComponent implements OnInit {
           this.libros.push(y);
         })
       })
+
+      this.users.getUserAccount(this.userData.uid).update({cargos: this.userData.cargos});
 
       console.log(this.prestamos);
       console.log(this.libros)
