@@ -16,7 +16,12 @@ th {
   padding: 20px;
   background-color: azure;
   border-radius: 20px;
+  text-align: center;
 
+}
+
+.tabla{
+  padding: 20px;
 }
 
 tr:hover {
@@ -32,4 +37,7 @@ h1,h2 {
   font-family: 'Bellota', cursive;
   text-align: center;
 
+}
+h3{
+  font-family: 'Bellota', cursive;
 }
