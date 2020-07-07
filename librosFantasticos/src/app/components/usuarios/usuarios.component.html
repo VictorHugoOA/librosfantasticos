@@ -1,8 +1,10 @@
-<div *ngIf="userData.usuario != 'Admin'" class="row mt-4">
-  <div class="row mt-4 table-responsive  contenedor-tabla">
-    <!--este div tiene el ngfor de estado-->
-    <h2>Usuario:{{userData.usuario}}</h2>
+<div *ngIf="userData.usuario != 'Admin'" class="col mt-5">
+  <h2> Usuario: {{userData.usuario}} 
     <h3>Cargos:</h3>
+  </h2>
+ 
+  <div class="col mt-4 table-responsive  contenedor-tabla">
+    
     <table class="tabla">
       <thead>
         <tr>
