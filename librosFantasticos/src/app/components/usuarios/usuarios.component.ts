@@ -4,6 +4,7 @@ import { prestamo } from '../Services/prestamos/prestamos.service';
 import { LibrosService, libro } from '../services/libros.service';
 import { AccesibilidadService } from '../Services/accesibilidad.service';
 import { take } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-usuarios',
@@ -19,7 +20,7 @@ export class UsuariosComponent implements OnInit {
   allowed: boolean = false;
   today:Date = new Date();
 
-  constructor(private users: UsuariosService, private libroSer: LibrosService, private access: AccesibilidadService) { }
+  constructor(private users: UsuariosService, private libroSer: LibrosService, private access: AccesibilidadService, private router: Router) { }
 
   ngOnInit(): void {
     this.users.getUserPrestamos(this.userData.uid).snapshotChanges().pipe(take(1)).subscribe( async (el) =>
