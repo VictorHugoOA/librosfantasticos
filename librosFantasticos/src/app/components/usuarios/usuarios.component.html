@@ -1,32 +1,32 @@
 <div *ngIf="userData.usuario != 'Admin'" class="row mt-4">
   <div *ngIf="allowed && (prestamos.length > 0);" class="row mt-4 table-responsive  contenedor-tabla">
     <!--este div tiene el ngfor de estado-->
-    <h2>Usuario:{{userData.usuario}}</h2>
-    <h3>Cargos: ${{userData.cargos | number :'1.2-2'}} MXN <i class="fas fa-coins"></i></h3>
+    <h2 (click)='speech("Usuario: " + userData.usuario)'>Usuario:{{userData.usuario}}</h2>
+    <h3 (click)='speech("Cargos: " + userData.cargos + " pesos mexicanos")'>Cargos: ${{userData.cargos | number :'1.2-2'}} MXN <i class="fas fa-coins"></i></h3>
     <table class="tabla">
       <thead>
         <tr>
 
-          <th>Titulo</th>
-          <th>Autor</th>
-          <th>Portada</th>
-          <th>Fecha de prestamo</th>
-          <th>Fecha de entrega</th>
-          <th>Tipo</th>
-          <th>Estado</th>
+          <th (click)='speech("Titulo")'>Titulo</th>
+          <th (click)='speech("Autor")'>Autor</th>
+          <th (click)='speech("Portada")'>Portada</th>
+          <th (click)='speech("Fecha de prestamo")'>Fecha de prestamo</th>
+          <th (click)='speech("Fecha de entrega")'>Fecha de entrega</th>
+          <th (click)='speech("Tipo de prestamo")'>Tipo</th>
+          <th (click)='speech("Estado")'>Estado</th>
 
         </tr>
       </thead>
       <!--Aqui ngfor de  prestamos-->
       <tbody *ngIf="allowed">
         <tr *ngFor="let item of prestamos; let i = index">
-          <td>{{libros[i].nombre}}</td>
-          <td>{{libros[i].autor}}</td>
+          <td (click)='speech(libros[i].nombre)'>{{libros[i].nombre}}</td>
+          <td (click)='speech(libros[i].autor)'>{{libros[i].autor}}</td>
           <td><img [src]="libros[i].img" class="portada img-fluid"alt=""></td>
-          <td>{{item.fechaInicio | date}}</td>
-          <td>{{item.fechaEntrega | date}}</td>
-          <td>{{item.modalidad}}</td>
-          <td><button (click)="eliminar(item, libros[i]);" mat-stroked-button color="warn"><i class="fas fa-times-circle"></i></button></td>
+          <td (click)='speech(item.fechaInicio.toDateString())'>{{item.fechaInicio | date}}</td>
+          <td (click)='speech(item.fechaEntrega.toDateString())'>{{item.fechaEntrega | date}}</td>
+          <td (click)='speech(item.modalidad)'>{{item.modalidad}}</td>
+          <td><button (focus)="speech('Eliminar prestamo:' + libros[i].nombre + '. Usuario: ' + userData.usuario)" (click)="eliminar(item, libros[i]);" mat-stroked-button color="warn"><i class="fas fa-times-circle"></i></button></td>
         </tr>
       </tbody>
     </table>

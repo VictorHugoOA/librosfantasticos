@@ -66,6 +66,10 @@ export class UsuariosComponent implements OnInit {
     })
   }
 
+  speech(msg: string) {
+    this.access.getSpeech(msg);
+  }
+
   eliminar(prestamo: any, libro: any)
   {
     if(prestamo.modalidad == 'fisico')

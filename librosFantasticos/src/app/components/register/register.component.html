@@ -12,27 +12,27 @@
                 <div class="form-group row justify-content-between">
                     <label for="email" class="col-2 col-md-2 col-sm-2 col-form-label">Correo:</label>
                     <div class="col-8 col-md-8 col-sm-8">
-                        <input type="email" name="email" class="form-control" formControlName="email" (click)="access.getSpeech('Ingresa tu correo'); checkEmail();" id="" placeholder="Ingresa tu correo" required>
+                        <input type="email" name="email" class="form-control" formControlName="email" (click)="access.getSpeech('Ingresa tu correo');" id="" placeholder="Ingresa tu correo" required>
                     </div>
                 </div>
                 <div class="form-group row justify-content-between">
                     <label for="confirmEmail" class="col-2 col-md-2 col-sm-2 col-form-label">Confirmar:</label>
                     <div class="col-8 col-md-8 col-sm-8">
-                        <input type="email" name="confirmEmail" class="form-control" (click)="access.getSpeech('Confimra tu correo'); checkConfirmationEmail();" formControlName="confirmEmail" id=""
+                        <input type="email" name="confirmEmail" class="form-control" (click)="access.getSpeech('Confimra tu correo');" formControlName="confirmEmail" id=""
                             placeholder="Confirma tu correo" required>
                     </div>
                 </div>
                 <div class="form-group row justify-content-between">
                     <label for="password" class="col-2 col-md-2 col-sm-2 col-form-label">Contraseña:</label>
                     <div class="col-8 col-md-8 col-sm-8">
-                        <input type="password" class="form-control" formControlName="password" (click)="access.getSpeech('Ingresa tu contraseña'); checkPassword()" name="password" id=""
+                        <input type="password" class="form-control" formControlName="password" (click)="access.getSpeech('Ingresa tu contraseña');" name="password" id=""
                             placeholder="Ingresa tu contraseña" required>
                     </div>
                 </div>
                 <div class="form-group row justify-content-between">
                     <label for="confirmPassword" class="col-2 col-md-2 col-sm-2 col-form-label">Confirmar:</label>
                     <div class="col-8 col-md-8 col-sm-8">
-                        <input type="password" class="form-control" formControlName="confirmPassword" (click)="access.getSpeech('Confimra tu contraseña'); checkConfirmationPassword()" name="confirmPassword" id=""
+                        <input type="password" class="form-control" formControlName="confirmPassword" (click)="access.getSpeech('Confimra tu contraseña');" name="confirmPassword" id=""
                             placeholder="Confirma tu contraseña" required>
                     </div>
                 </div>

@@ -3,10 +3,10 @@
 <div class="container">
     <div *ngIf="userData" class="row mt-4 text-center">
       <div class="col">
-        <h1>Cuenta</h1>
-        <h2>Usuario: {{userData.usuario}}</h2>
-        <h2>Email: {{userData.email}}</h2>
-        <h2>Cargos: ${{userData.cargos | number :'1.2-2'}} MXN <i class="fas fa-coins"></i></h2>
+        <h1 (click)='speech("Titulo")'>Cuenta</h1>
+        <h2 (click)='speech("Usuario: " + userData.usuario)'>Usuario: {{userData.usuario}}</h2>
+        <h2 (click)='speech("Correo: " + userData.email)'>Email: {{userData.email}}</h2>
+        <h2 (click)='speech("Cargos: " + userData.cargos + " pesos mexicanos")'>Cargos: ${{userData.cargos | number :'1.2-2'}} MXN <i class="fas fa-coins"></i></h2>
       </div>
      
     </div>
@@ -37,8 +37,8 @@
                   <td (click)='speech(item.modalidad)'>{{item.modalidad}}</td>
                   <td (click)='speech(item.fechaInicio.toDateString())'>{{item.fechaInicio | date}}</td>
                   <td (click)='speech(item.fechaEntrega.toDateString())'>{{item.fechaEntrega | date}}</td>
-                  <td *ngIf="(today <= item.fechaEntrega); else atrasado"><a *ngIf="item.renovable; else norenovable" routerLink="/Usuario" class="btn btn-outline-success" (click)="renovar(item);">Renovar</a><ng-template #norenovable><td><button class="btn btn-outline-warning">Ya fue renovado</button></td></ng-template></td>
-                  <ng-template #atrasado><td><button class="btn btn-outline-danger">Atrasado</button></td></ng-template>
+                  <td *ngIf="(today <= item.fechaEntrega); else atrasado"><a *ngIf="item.renovable; else norenovable" class="btn btn-outline-success" (focus)="speech('Renovar libro: ' + libros[i].nombre)" (click)="renovar(item);">Renovar</a><ng-template #norenovable><td><button (focus)="speech('El libro:' + libros[i].nombre + ' ya fue renovado')" class="btn btn-outline-warning">Ya fue renovado</button></td></ng-template></td>
+                  <ng-template #atrasado><td><button (focus)="speech('El libro: ' + libros[i].nombre)" class="btn btn-outline-danger">Atrasado</button></td></ng-template>
               </tr>
             </tbody>
         </table>

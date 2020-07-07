@@ -48,10 +48,9 @@ export class RegisterComponent implements OnInit {
     if(this.email.invalid)
     {
       this.toastr.error("Ese es un email invalido", "Error: Correo electronico");
-      this.validRegister = false;
-      return;
+      return false;
     }
-    this.validRegister = true;
+    return true;
   }
 
   checkConfirmationEmail()
@@ -59,9 +58,9 @@ export class RegisterComponent implements OnInit {
     if(this.confirmEmail.invalid)
     {
       this.toastr.error("Ese es un email de confirmacion invalido", "Error: Correo electronico");
-      this.validRegister = false;
+      return false;
     }
-    this.validRegister = true;
+    return true;
   }
 
   checkPassword()
@@ -70,16 +69,14 @@ export class RegisterComponent implements OnInit {
     if(pass.match(' '))
     {
       this.toastr.error("La contraseña no puede tener espacios", "Error: Contraseña");
-      this.validRegister = false;
-      return;
+      return false;
     }
     if(pass.length < 6)
     {
       this.toastr.error("La contraseña debe tener minimo 6 caracteress", "Error: Contraseña");
-      this.validRegister = false;
-      return;
+      return false;
     }
-    this.validRegister = true;
+    return true;
   }
 
   checkConfirmationPassword()
@@ -88,16 +85,14 @@ export class RegisterComponent implements OnInit {
     if(pass.match(' '))
     {
       this.toastr.error("La contraseña de confirmacion no puede tener espacios", "Error: Contraseña");
-      this.validRegister = false;
-      return;
+      return false;
     }
     if(pass.length < 6)
     {
       this.toastr.error("La contraseña de confirmacion debe tener minimo 6 caracteres", "Error: Contraseña");
-      this.validRegister = false;
-      return;
+      return false;
     }
-    this.validRegister = true;
+    return true;
   }
 
   onSaveForm() {
@@ -111,7 +106,7 @@ export class RegisterComponent implements OnInit {
       return;
     }
 
-    if(this.validRegister)
+    if(this.checkEmail() && this.checkConfirmationEmail() && this.checkPassword() && this.checkConfirmationPassword())
       this.auth.signUp(this.email.value, this.password.value, this.usuario.value);
     else
       this.toastr.error("Lo siento, esa no es una cuenta de registro valida", "Error cuenta de registro");

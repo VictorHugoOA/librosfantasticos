@@ -3,6 +3,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { Observable } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ export class AuthService {
 
   allUsers: AngularFirestoreCollection<any>;
   userData: Observable<firebase.User>;
-  constructor(private auth: AngularFireAuth, private toastr: ToastrService, private usuarios: AngularFirestore) {
+  constructor(private auth: AngularFireAuth, private toastr: ToastrService, private usuarios: AngularFirestore, private router: Router) {
     this.userData = auth.authState;
     this.allUsers = this.usuarios.collection('usuarios');
   }
@@ -24,6 +25,7 @@ export class AuthService {
         this.allUsers.doc(user.uid).set({uid: user.uid, usuario: nick, email: email, cargos: 0});
       })
       this.toastr.success("Se han guardado los datos con exito", "Exito");
+      this.router.navigate(['/Home']);
     }).catch(error => {
       console.log('Something is wrong: ', error.message);
       this.toastr.error(error.message, "Error creando el usuario");
@@ -33,6 +35,7 @@ export class AuthService {
     this.auth.signInWithEmailAndPassword(email, password).then(res => {
       console.log('Succesfully signed in');
       this.toastr.success("El usuario si esta registrado", "Usuario registrado");
+      this.router.navigate(['/Home']);
     }).catch(error => {
       console.log('Something went wrong: ', error.mesagge);
       this.toastr.error(error.message, "Error al ingresar con el usuario");

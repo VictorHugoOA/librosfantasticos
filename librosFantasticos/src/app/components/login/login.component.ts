@@ -3,6 +3,7 @@ import { AccesibilidadService } from '../Services/accesibilidad.service';
 import { FormGroup, FormControl, Validators, EmailValidator} from '@angular/forms';
 import { AuthService } from '../Services/auth/auth.service';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -20,7 +21,7 @@ export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
 
-  constructor(private access: AccesibilidadService, private auth: AuthService, private toastr: ToastrService) {
+  constructor(private access: AccesibilidadService, private auth: AuthService, private toastr: ToastrService, private router: Router) {
     this.loginForm = this.createFormGroup();
    }
 
@@ -70,7 +71,6 @@ export class LoginComponent implements OnInit {
     if(this.checkPassword() && this.checkEmail())
     {
       this.auth.signIn(this.email.value, this.password.value);
-      
     }
     this.onResetForm();
 
