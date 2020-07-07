@@ -5,6 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -32,6 +33,8 @@ export class AuthService {
       
     });
   }
+
+
   signIn(email: string, password: string) {
     this.auth.signInWithEmailAndPassword(email, password).then(res => {
       console.log('Succesfully signed in');

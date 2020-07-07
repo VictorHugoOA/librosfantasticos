@@ -1,0 +1,38 @@
+<div class="container">
+    <div class="px-1 py-5 div-container">
+        <div class="div-az p-2 m-auto">
+            <h1 class="register-title">Registrar usuario</h1>
+            <form [formGroup]="registerForm">
+                <div class="form-group row justify-content-between">
+                    <label #user (click)="access.getSpeech('Usuario')" for="usuario"
+                        class="col-2 col-md-2 col-sm-2 col-form-label">Celular:</label>
+                    <div class="col-8 col-md-8 col-sm-8">
+                        <input type="text" class="form-control" (click)="access.getSpeech('Ingresa tu usuario');"
+                            formControlName="usuario" name="usuario" id="" placeholder="Ejemplo: 4491442900" required>
+                    </div>
+                </div>
+                <div class="form-group row justify-content-end">
+                    <div class="col-4 col-md-4 col-sm-4">
+                        <button type="submit" (click)="sendCode()" id="sign-in-button" mat-raised-button
+                            color="warn">Enviar codigo</button>
+                    </div>
+                </div>
+                <div class="form-group row justify-content-between">
+                    <label #user (click)="access.getSpeech('Usuario')" for="usuario"
+                        class="col-2 col-md-2 col-sm-2 col-form-label">Codigo:</label>
+                    <div class="col-8 col-md-8 col-sm-8">
+                        <input type="text" class="form-control" (click)="access.getSpeech('Ingresa tu usuario');"
+                            formControlName="codigo" name="usuario" id="" placeholder="Ingresa tu codigo" required>
+                    </div>
+                </div>
+                <div class="form-group row justify-content-between">
+                    <div class="col-8 col-md-8 col-sm-8 offset-4">
+                        <button type="submit" [disabled]="registerForm.invalid" (click)="verificarCodigo()"
+                            mat-raised-button color="warn">Crear
+                            cuenta</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

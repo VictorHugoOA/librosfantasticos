@@ -91,6 +91,7 @@ import { PrestamosService } from './components/Services/prestamos/prestamos.serv
 import { CuentaComponent } from './components/cuenta/cuenta.component';
 import { UsuariosService } from './components/Services/usuarios/usuarios.service';
 import { UsuariosComponent } from './components/usuarios/usuarios.component';
+import { RegistrocelComponent } from './components/registrocel/registrocel.component';
 
 
 @NgModule({
@@ -113,7 +114,8 @@ import { UsuariosComponent } from './components/usuarios/usuarios.component';
     LibroInfoComponent,
     QrComponent,
     CuentaComponent,
-    UsuariosComponent
+    UsuariosComponent,
+    RegistrocelComponent
   ],
   imports: [
     BrowserModule,

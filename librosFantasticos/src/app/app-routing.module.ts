@@ -14,6 +14,7 @@ import { UsuarioComponent } from './components/usuario/usuario.component';
 import { LibroInfoComponent } from './components/libro-info/libro-info.component';
 import { SearchComponent } from './components/search/search.component';
 import { CuentaComponent } from './components/cuenta/cuenta.component';
+import { RegistrocelComponent } from './components/registrocel/registrocel.component';
 
 
 
@@ -26,10 +27,10 @@ const routes: Routes = [
   { path: "Admin", component: AdminComponent },
   { path: "Registro", component: RegisterComponent },
   { path: "Libro/:key", component: LibroInfoComponent },
+  { path: "Celular", component: RegistrocelComponent},
   { path: "Buscar/:b", component: SearchComponent },
   { path: "Ingresar", component: LoginComponent },
   { path: "Usuario", component:CuentaComponent},
-  { path: "**", pathMatch: 'full', redirectTo: "Home" },
   { path: "**", pathMatch: 'full', redirectTo: "Home" }
 ];
 

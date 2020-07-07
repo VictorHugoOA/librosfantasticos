@@ -26,7 +26,8 @@
             <button mat-button class="nav-item nav-link active" (focus)="speech('Login')" routerLink="/Ingresar"><mat-icon>login</mat-icon>Login</button>
         </li>
         <li class="nav-item active" *ngIf="auth.userData | async">
-            <button mat-button class="nav-item nav-link active" (focus)="speech('Usuario')" routerLink="/Usuario">{{(auth.userData | async)?.email}}</button>
+            <button mat-button class="nav-item nav-link active" (focus)="speech('Usuario')" *ngIf="(auth.userData | async)?.email; else numero" routerLink="/Usuario">{{(auth.userData | async)?.email}}</button>
+            <ng-template #numero><button mat-button class="nav-item nav-link active" (focus)="speech('Usuario')" routerLink="/Usuario">{{(auth.userData | async)?.phonenumber}}</button></ng-template>
         </li>
         <li class="nav-item active" *ngIf="auth.userData | async">
           <button mat-button (click)="auth.signOut()" routerLink="/Home" (focus)="speech('Log Out')" class="nav-item nav-link active"><mat-icon>exit_to_app</mat-icon>Log Out</button>
