@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { FormControl, Validators } from '@angular/forms';
 import { AuthService } from '../Services/auth/auth.service';
 import { AccesibilidadService } from '../Services/accesibilidad.service';
+import { ToastrService } from 'ngx-toastr';
 import { PrestamosService } from '../Services/prestamos/prestamos.service';
 
 @Component({
@@ -19,7 +20,7 @@ export class LibroInfoComponent implements OnInit {
   bandera: boolean;
   user: any = null;
   
-  constructor(public activedroute: ActivatedRoute, private Libro: LibrosService, public auth: AuthService, private access: AccesibilidadService, private prestamos: PrestamosService) {
+  constructor(public activedroute: ActivatedRoute, private toastr: ToastrService, private Libro: LibrosService, public auth: AuthService, private access: AccesibilidadService, private prestamos: PrestamosService) {
     //recuperar posicióm
     this.activedroute.params.subscribe(params => {
       this.posicion = params['key'];
@@ -36,6 +37,8 @@ export class LibroInfoComponent implements OnInit {
     } else {
       this.bandera = false;
       this.prestamos.addPrestamoUser(this.user.uid, this.milibro, this.tipoPrestamo.value);
+      this.toastr.success("El prestamo fue realizado", "Prestamo exitoso");
+
     }
   }
   revisar(): boolean {
