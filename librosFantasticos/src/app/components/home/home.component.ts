@@ -12,8 +12,10 @@ export class HomeComponent implements OnInit {
   Libros:libro[];
   libroRand:libro[] = [];
   logo="../../../assets/img/logo.png";
-  
-  constructor(private mislibros:LibrosService, private access: AccesibilidadService) { }
+  loading:boolean;
+  constructor(private mislibros:LibrosService, private access: AccesibilidadService) { 
+    this.loading=true;
+  }
 
   ngOnInit(): void {
   this.mislibros.getLibros().snapshotChanges().subscribe((data)=>
@@ -45,6 +47,7 @@ export class HomeComponent implements OnInit {
         }
     
         console.log(this.libroRand);
+        this.loading=false;
         
       
     });

@@ -13,7 +13,8 @@
 
 </div>
 
-<div class="container ">
+<div class="container">
   <h2 (click)="speech('Novedades')">¡Novedades!</h2>
+  <app-loading *ngIf="this.loading"></app-loading>
   <app-ficha-libro [items]="libroRand"></app-ficha-libro>
 </div>

@@ -24,8 +24,8 @@ export class GraficaComponent implements OnInit {
 
       console.log(data2);
       data2.forEach((element) => {
-       this.dat.push(element.prestamos);
-        this.label.push(element.dia+"/0"+element.mes);        
+      this.dat.push(element.prestamos);
+      this.label.push(element.dia+"/0"+element.mes);        
 
       });
       this.chart = new Chart("my chart", {
