@@ -110,8 +110,12 @@
 
     </table>
   </div>
-
-  <h1>Prestamos por usuario</h1>
+  <br>
+  <div class="row">
+    <div class="col-4">
+      <h1>Prestamos por usuario</h1>
+    </div>
+  </div>
   <div *ngIf="allUsers">
     <div *ngFor="let user of allUsers">
       <app-usuarios [userData]="user"></app-usuarios>

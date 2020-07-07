@@ -23,4 +23,10 @@ export class UsuariosService {
     return this.db.collection('usuarios');
   }
 
+  deletePrestamoUser(uid: string, prestamo: any)
+  {
+    this.db.collection(uid).doc(prestamo.$key).delete();
+  }
+
+
 }

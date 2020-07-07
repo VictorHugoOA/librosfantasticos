@@ -70,6 +70,7 @@ export class LoginComponent implements OnInit {
     if(this.checkPassword() && this.checkEmail())
     {
       this.auth.signIn(this.email.value, this.password.value);
+      
     }
     this.onResetForm();
 
