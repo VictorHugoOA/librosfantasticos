@@ -92,6 +92,7 @@ import { CuentaComponent } from './components/cuenta/cuenta.component';
 import { UsuariosService } from './components/Services/usuarios/usuarios.service';
 import { UsuariosComponent } from './components/usuarios/usuarios.component';
 import { RegistrocelComponent } from './components/registrocel/registrocel.component';
+import { LoadingComponent } from './components/loading/loading.component';
 
 
 @NgModule({
@@ -115,7 +116,8 @@ import { RegistrocelComponent } from './components/registrocel/registrocel.compo
     QrComponent,
     CuentaComponent,
     UsuariosComponent,
-    RegistrocelComponent
+    RegistrocelComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,
