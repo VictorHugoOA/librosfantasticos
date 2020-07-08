@@ -12,8 +12,9 @@ export class SearchComponent implements OnInit {
   b:string;
   encontrada: boolean;
   Libros:libro[]=[];
+  loading: boolean;
   constructor(private router: ActivatedRoute, private mislibros: LibrosService, private access: AccesibilidadService) {
-
+    this.loading = true;
     this.router.params.subscribe((params) => {
       this.b= params['b'];
       this.BusquedaLibros(params['b']);
@@ -44,6 +45,7 @@ export class SearchComponent implements OnInit {
       {
         this.encontrada = true;
       }
+      this.loading = false;
     })
    }
 

@@ -1,3 +1,4 @@
+<app-loading *ngIf="this.loading"></app-loading>
 <app-ficha-libro  *ngIf="(this.encontrada && Libros); else NoExiste" [items]="Libros"></app-ficha-libro>
 
 <ng-template #NoExiste>
@@ -9,5 +10,4 @@
             Regresar
         </button>
       </div>
-    
 </ng-template>
