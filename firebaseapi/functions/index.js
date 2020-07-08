@@ -129,10 +129,12 @@ app.get('/get-days', (req, res) =>
                         strMes = el.get('mes');
 
                     val.push({uid: strDia + strMes + el.get('ano'), dia: el.get('dia'), mes: el.get('mes'), ano: el.get('ano'), prestamos: el.get('prestamos')})
-                    console.log(`${el.get('ano')}${el.get('mes')}${el.get('dia')}`);
+                    console.log(new Date(`${el.get('ano')}-${el.get('mes')}-${el.get('dia')}`));
             })
             val.sort((a, b) => {
-                return parseInt(`${a.ano}${a.mes}${a.dia}`) - parseInt(`${b.ano}${b.mes}${b.dia}`);
+                let n = new Date(a.ano,a.mes, a.dia);
+                let nn = new Date(b.ano,b.mes, b.dia);
+                return nn - n;
             })
             while(val.length > 10)
                 val.pop();
