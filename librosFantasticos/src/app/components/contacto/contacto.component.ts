@@ -71,6 +71,10 @@ export class ContactoComponent implements OnInit {
     this.httpClient.post('https://us-central1-libros-fantsticos.cloudfunctions.net/widgets/send-email', {from: this.email.value, msg: this.comment.value, user: this.user.value}).subscribe((data)=>
     {
       console.log(data);
+      this.toastr.success("El mensaje se envio con exito", "Mensaje enviado");
+      this.user.reset();
+      this.email.reset();
+      this.comment.reset();
     })
   }
 
