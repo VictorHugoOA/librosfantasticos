@@ -4,6 +4,8 @@
     <button mat-button (focus)="speech('Expandir todo')" (click)="accordion.openAll()">Expandir todo</button>
     <button mat-button (focus)="speech('Cerrar Todo')" (click)="accordion.closeAll()">Cerrar todo</button>
   </div>
+
+  <!--Componente accordion de angular material-->
   <mat-accordion class="example-headers-align" multi>
     <mat-expansion-panel>
       <mat-expansion-panel-header (focus)="speech('¿Necesito una cuenta para leer los ejemplares disponibles?... Se puede ver nuestra selección libros disponibles sin necesidad de estar logeado, pero deberas estar logeado para poder leer los ejemplares virtuales.')">
